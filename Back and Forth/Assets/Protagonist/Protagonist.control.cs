@@ -48,7 +48,8 @@ namespace Game
 		 */
 		public void MoveVelocity(Vector3 velocity)
 		{
-			rigidbody.velocity = velocity;
+			rigidbody.velocity = Vector3.Project(rigidbody.velocity, Physics.gravity) +
+				Vector3.ProjectOnPlane(velocity, Physics.gravity);
 		}
 
 		/**
