@@ -17,6 +17,7 @@ namespace Game
 		#region Fields
 		private Level currentLevel = null;
 		private bool boxPickedUp = false;
+		private bool isOnTheWayToWarehouse = true;
 		#endregion
 
 		#region Life cycle
@@ -32,7 +33,13 @@ namespace Game
 			safeHouses.Add(trigger);
 			UpdateTimerState();
 			if(trigger == dormitoryRange)
-				PassLevel();
+			{
+				if(!isOnTheWayToWarehouse)
+				{
+					PassLevel();
+					isOnTheWayToWarehouse = true;
+				}
+			}
 		}
 
 		public void OnProtagonistExitSafehouseTrigger(Collider trigger)
@@ -62,6 +69,7 @@ namespace Game
 				return;
 			}
 			boxPickedUp = false;
+			isOnTheWayToWarehouse = false;
 			LoadLevel(levelIndex);
 			Debug.Log("Delivered a box.");
 		}
