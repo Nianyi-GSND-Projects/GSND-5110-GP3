@@ -38,5 +38,12 @@ namespace Game
 			Debug.Log("Game Started.");
 		}
 		#endregion
+
+		#region States
+		private void Finish()
+		{
+			Debug.Log("Game finished.");
+		}
+		#endregion
 	}
 }
