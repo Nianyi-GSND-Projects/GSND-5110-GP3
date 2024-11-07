@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65ff45f86d23dda4aba7b7f9502f01b8, type: 3}
-  m_Name: Default Protagonist Profile
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Mechanism Test Volume Profile
   m_EditorClassIdentifier: 
-  baseMovementSpeed: 3
-  baseOrientationSpeed: 0.2
-  invertY: 1
-  zenithClamp: 90
-  jumpHeight: 1
+  components: []

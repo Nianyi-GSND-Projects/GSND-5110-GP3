@@ -41,6 +41,13 @@ namespace Game
 			}
 		}
 
+		public void AlignTo(Transform target) {
+			transform.position = target.position;
+			transform.rotation = Quaternion.LookRotation(target.forward, -Physics.gravity);
+			if(rigidbody)
+				rigidbody.velocity = Vector3.zero;
+		}
+
 		/**
 		 * <param name="velocity">
 		 * World-space velocity.
