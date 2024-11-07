@@ -19,11 +19,22 @@ namespace Game
 			playerInput.actions = Instantiate(playerInput.actions);
 
 			MovementEnabled = true;
+			OrientationEnabled = true;
 		}
 
 		protected void FixedUpdate()
 		{
 			FixedUpdateMovement();
+		}
+
+		protected void OnEnable()
+		{
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+
+		protected void OnDisable()
+		{
+			Cursor.lockState = CursorLockMode.None;
 		}
 		#endregion
 
@@ -62,6 +73,21 @@ namespace Game
 		{
 			var raw = value.Get<Vector2>();
 			localMovementVelocity = new Vector3(raw.x, 0, raw.y) * protagonist.Profile.baseMovementSpeed;
+		}
+		#endregion
+
+		#region Orientation
+		public bool OrientationEnabled {
+			get => GetActionMapEnabled("Orientation");
+			set => SetActionMapEnabled("Orientation", value);
+		}
+
+		protected void OnOrientDelta(InputValue value) {
+			var raw = value.Get<Vector2>();
+			Vector2 delta = raw * protagonist.Profile.baseOrientationSpeed;
+			if(protagonist.Profile.invertY)
+				delta.y = -delta.y;
+			protagonist.RotateDelta(delta);
 		}
 		#endregion
 	}

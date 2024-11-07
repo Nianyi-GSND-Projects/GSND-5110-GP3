@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Default Protagonist Profile
   m_EditorClassIdentifier: 
   baseMovementSpeed: 3
+  baseOrientationSpeed: 0.2
+  invertY: 1

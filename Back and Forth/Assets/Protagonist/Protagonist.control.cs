@@ -2,17 +2,22 @@ using UnityEngine;
 
 namespace Game
 {
-	[RequireComponent(typeof(CharacterController))]
+	[RequireComponent(typeof(CapsuleCollider))]
+	[RequireComponent(typeof(Rigidbody))]
 	public partial class Protagonist
 	{
 		#region Fields
-		private CharacterController cc;
+		private new CapsuleCollider collider;
+		private new Rigidbody rigidbody;
+		private ProtagonistInput input;
 		#endregion
 
 		#region Life cycle
 		private void StartControl()
 		{
-			cc = GetComponent<CharacterController>();
+			collider = GetComponent<CapsuleCollider>();
+			rigidbody = GetComponent<Rigidbody>();
+			input = GetComponent<ProtagonistInput>();
 		}
 		#endregion
 
@@ -21,19 +26,16 @@ namespace Game
 		{
 			get
 			{
-				if(!TryGetComponent<ProtagonistInput>(out var input))
+				if(!input)
 					return false;
 				return input.enabled;
 			}
 			set
 			{
-				if(!TryGetComponent<ProtagonistInput>(out var input))
+				if(!input && value)
 				{
-					if(value)
-					{
-						Debug.LogWarning("Cannot enable input due to missing ProtagonistInput component.");
-						return;
-					}
+					Debug.LogWarning("Cannot enable input due to missing ProtagonistInput component.");
+					return;
 				}
 				input.enabled = value;
 			}
@@ -46,15 +48,27 @@ namespace Game
 		 */
 		public void MoveVelocity(Vector3 velocity)
 		{
-			cc.SimpleMove(velocity);
+			rigidbody.velocity = velocity;
+		}
+
+		/**
+		 * <param name="delta">
+		 * The angle to rotate relative to current direction, in degrees.
+		 * </param>
+		 */
+		public void RotateDelta(Vector2 delta)
+		{
+			head.Rotate(Vector3.right, delta.y, Space.Self);
+			transform.Rotate(Vector3.up, delta.x, Space.Self);
 		}
 
 		public void Jump(float height)
 		{
 			if(height <= 0.0f)
 				return;
+
 			float speed = Mathf.Sqrt(2.0f * height * Physics.gravity.magnitude);
-			// TODO
+			rigidbody.AddForce(Physics.gravity.normalized * -speed, ForceMode.VelocityChange);
 		}
 		#endregion
 	}

@@ -6,6 +6,7 @@ namespace Game
 	{
 		#region Serialized fields
 		[SerializeField] private ProtagonistProfile profile;
+		[SerializeField] private Transform head;
 		#endregion
 
 		#region Properties
