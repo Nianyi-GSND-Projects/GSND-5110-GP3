@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Game
 {
@@ -22,6 +23,20 @@ namespace Game
 			if(trigger != currentLevel.PassingTrigger)
 				return;
 			PassLevel();
+		}
+
+		private HashSet<Collider> safeHouses = new();
+
+		public void OnProtagonistEnterSafehouseTrigger(Collider trigger)
+		{
+			safeHouses.Add(trigger);
+			UpdateTimerState();
+		}
+
+		public void OnProtagonistExitSafehouseTrigger(Collider trigger)
+		{
+			safeHouses.Remove(trigger);
+			UpdateTimerState();
 		}
 		#endregion
 
@@ -67,13 +82,9 @@ namespace Game
 
 		private void ReloadLevel()
 		{
+			safeHouses.Clear();
 			UseLevel(levelIndex, true);
 			Debug.Log($"Reloaded level {levels[levelIndex].name}.", currentLevel);
-		}
-
-		private void Finish()
-		{
-			Debug.Log("Game finished.");
 		}
 		#endregion
 	}

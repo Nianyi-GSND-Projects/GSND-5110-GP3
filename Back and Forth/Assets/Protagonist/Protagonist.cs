@@ -21,8 +21,21 @@ namespace Game
 
 		protected void OnTriggerEnter(Collider other)
 		{
-			if(other.gameObject.layer == LayerMask.NameToLayer("Passing Trigger")) {
+			if(other.gameObject.layer == LayerMask.NameToLayer("Passing Trigger"))
+			{
 				Game.Instance.OnProtagonistEnterPassingTrigger(other);
+			}
+			if(other.gameObject.layer == LayerMask.NameToLayer("Safehouse Trigger"))
+			{
+				Game.Instance.OnProtagonistEnterSafehouseTrigger(other);
+			}
+		}
+
+		protected void OnTriggerExit(Collider other)
+		{
+			if(other.gameObject.layer == LayerMask.NameToLayer("Safehouse Trigger"))
+			{
+				Game.Instance.OnProtagonistExitSafehouseTrigger(other);
 			}
 		}
 		#endregion
