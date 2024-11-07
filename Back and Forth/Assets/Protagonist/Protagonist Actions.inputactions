@@ -1,0 +1,123 @@
+{
+    "name": "Protagonist Actions",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "49ef5856-c142-46c4-97d9-c8b46ae05e92",
+            "actions": [
+                {
+                    "name": "MoveVelocity",
+                    "type": "Value",
+                    "id": "245c57d1-59cf-4596-9102-0f5f905c3592",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WASD",
+                    "id": "c4b2ccc3-07d1-49b8-81ff-f746056fe600",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveVelocity",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "482f047d-99d4-49f2-a4b7-286cbece572e",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "MoveVelocity",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "b5fea816-95e7-4d6c-87b3-6103500bee17",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "MoveVelocity",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "7e4c75ac-f1f6-47ea-8027-01edc3a9a66f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "MoveVelocity",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "00685b04-ddca-4b3b-8e92-e8225f490dcd",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "MoveVelocity",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Orientation",
+            "id": "568c0d0b-caa9-4dad-b9ff-84c71e459f53",
+            "actions": [
+                {
+                    "name": "OrientDelta",
+                    "type": "Value",
+                    "id": "65c4837f-c748-45a7-8515-8b524531c4ad",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fc7d8586-bec3-42cf-a8c7-f469b1bf3957",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "ScaleVector2",
+                    "groups": ";PC",
+                    "action": "OrientDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PC",
+            "bindingGroup": "PC",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
