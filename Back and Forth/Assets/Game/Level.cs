@@ -8,11 +8,13 @@ namespace Game
 	{
 		#region Serialized fields
 		[SerializeField] private Transform spawnPoint;
+		[SerializeField] private Collider passingTrigger;
 		[SerializeField] private UnityEvent onEnter, onExit;
 		#endregion
 
 		#region Properties
 		public Transform SpawnPoint => spawnPoint;
+		public Collider PassingTrigger => passingTrigger;
 		#endregion
 
 		#region Interfaces

@@ -18,6 +18,13 @@ namespace Game
 		{
 			StartControl();
 		}
+
+		protected void OnTriggerEnter(Collider other)
+		{
+			if(other.gameObject.layer == LayerMask.NameToLayer("Passing Trigger")) {
+				Game.Instance.OnProtagonistEnterPassingTrigger(other);
+			}
+		}
 		#endregion
 	}
 }
