@@ -15,3 +15,4 @@ MonoBehaviour:
   baseMovementSpeed: 3
   baseOrientationSpeed: 0.2
   invertY: 1
+  zenithClamp: 90

@@ -58,8 +58,17 @@ namespace Game
 		 */
 		public void RotateDelta(Vector2 delta)
 		{
-			head.Rotate(Vector3.right, delta.y, Space.Self);
-			transform.Rotate(Vector3.up, delta.x, Space.Self);
+			var bodyAngles = transform.localEulerAngles;
+			bodyAngles.y += delta.x;
+			transform.localEulerAngles = bodyAngles;
+
+			var headAngles = head.localEulerAngles;
+			float clamp = Profile.zenithClamp;
+			if(headAngles.x < 180.0f)
+				headAngles.x = Mathf.Min(headAngles.x + delta.y, clamp);
+			else
+				headAngles.x = Mathf.Max(headAngles.x + delta.y, 360.0f - clamp);
+			head.localEulerAngles = headAngles;
 		}
 
 		public void Jump(float height)
