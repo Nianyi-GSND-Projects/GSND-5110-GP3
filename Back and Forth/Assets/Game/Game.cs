@@ -33,6 +33,8 @@ namespace Game
 
 			protagonist = FindObjectOfType<Protagonist>();
 
+			StartTimer();
+
 			StartLevel();
 
 			Debug.Log("Game Started.");

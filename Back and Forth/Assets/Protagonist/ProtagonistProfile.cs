@@ -9,5 +9,6 @@ namespace Game {
 		public bool invertY = true;
 		[Range(0, 90)] public float zenithClamp = 90.0f;
 		[Min(0)] public float jumpHeight = 1.0f;
+		[Min(0)] public float interactionDistance = 2.0f;
 	}
 }

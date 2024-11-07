@@ -42,6 +42,12 @@ namespace Game
 		private Coroutine timerCoroutine;
 		#endregion
 
+		#region Life cycle
+		private void StartTimer() {
+			ResetTimer();
+		}
+		#endregion
+
 		#region Functions
 		private IEnumerator TimerCoroutine() {
 			TimerPercentage = 1.0f;
@@ -56,13 +62,14 @@ namespace Game
 			OnTimeUp();
 		}
 
-		private void StartTimer() {
+		private void RunTimer() {
 			if(timerCoroutine != null)
 				return;
+			ResetTimer();
 			timerCoroutine = StartCoroutine(TimerCoroutine());
 		}
 
-		private void StopTimer() {
+		private void ResetTimer() {
 			if(timerCoroutine == null)
 				return;
 
@@ -75,14 +82,14 @@ namespace Game
 
 		private void OnTimeUp() {
 			Debug.Log("Time's up.");
-			ReloadLevel();
+			Respawn();
 		}
 
 		private void UpdateTimerState() {
 			if(safeHouses.Count == 0)
-				StartTimer();
+				RunTimer();
 			else
-				StopTimer();
+				ResetTimer();
 		}
 		#endregion
 	}

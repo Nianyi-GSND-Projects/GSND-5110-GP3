@@ -6,31 +6,33 @@ namespace Game
 	public partial class Game
 	{
 		#region Serialized fields
+		[Header("Level")]
+		[SerializeField] private Collider dormitoryRange;
+		[SerializeField] private Collider warehouseRange;
+		[SerializeField] private Transform dormitorySpawn, warehouseSpawn;
 		[SerializeField] private Level[] levels;
 		[SerializeField] private int levelIndex = 0;
 		#endregion
 
 		#region Fields
 		private Level currentLevel = null;
+		private bool boxPickedUp = false;
 		#endregion
 
 		#region Life cycle
-		protected void StartLevel() {
-			UseLevel(levelIndex, true);
+		protected void StartLevel()
+		{
+			Respawn();
 		}
 
-		public void OnProtagonistEnterPassingTrigger(Collider trigger) {
-			if(trigger != currentLevel.PassingTrigger)
-				return;
-			PassLevel();
-		}
-
-		private HashSet<Collider> safeHouses = new();
+		private readonly HashSet<Collider> safeHouses = new();
 
 		public void OnProtagonistEnterSafehouseTrigger(Collider trigger)
 		{
 			safeHouses.Add(trigger);
 			UpdateTimerState();
+			if(trigger == dormitoryRange)
+				PassLevel();
 		}
 
 		public void OnProtagonistExitSafehouseTrigger(Collider trigger)
@@ -41,14 +43,41 @@ namespace Game
 		#endregion
 
 		#region Functions
-		private void UseLevel(int index, bool respawn = false)
+		public void PickUpBox()
 		{
-			// Unload any loaded level.
+			if(boxPickedUp)
+			{
+				Debug.LogWarning("Already picked up a box. Cannot pick up more.");
+				return;
+			}
+			boxPickedUp = true;
+			Debug.Log("Picked up a box.");
+		}
+
+		public void DeliverBox()
+		{
+			if(!boxPickedUp)
+			{
+				Debug.LogWarning("No box picked up. Unable to deliver.");
+				return;
+			}
+			boxPickedUp = false;
+			LoadLevel(levelIndex);
+			Debug.Log("Delivered a box.");
+		}
+
+		private void UnloadLevel()
+		{
 			if(currentLevel != null)
 			{
 				Destroy(currentLevel.gameObject);
 				currentLevel = null;
 			}
+		}
+
+		private void LoadLevel(int index, bool respawn = false)
+		{
+			UnloadLevel();
 			// Check for invalid index.
 			if(index < 0 || index >= levels.Length)
 			{
@@ -59,11 +88,9 @@ namespace Game
 			// Load the specified level.
 			levelIndex = index;
 			currentLevel = Instantiate(levels[index]);
-			currentLevel.OnPass += PassLevel;
-			currentLevel.OnReload += ReloadLevel;
 			if(respawn)
 			{
-				protagonist.AlignTo(currentLevel.SpawnPoint);
+				protagonist.AlignTo(warehouseSpawn);
 			}
 			currentLevel.gameObject.SetActive(true);
 		}
@@ -77,14 +104,22 @@ namespace Game
 				Finish();
 				return;
 			}
-			UseLevel(nextIndex);
+			UnloadLevel();
+			levelIndex = nextIndex;
 		}
 
-		private void ReloadLevel()
+		private void Respawn()
 		{
 			safeHouses.Clear();
-			UseLevel(levelIndex, true);
-			Debug.Log($"Reloaded level {levels[levelIndex].name}.", currentLevel);
+			if(currentLevel != null)
+			{
+				LoadLevel(levelIndex, true);
+				Debug.Log($"Reloaded level {levels[levelIndex].name}.", currentLevel);
+			}
+			else
+			{
+				protagonist.AlignTo(dormitorySpawn);
+			}
 		}
 		#endregion
 	}

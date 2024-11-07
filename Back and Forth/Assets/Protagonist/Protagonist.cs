@@ -6,7 +6,7 @@ namespace Game
 	{
 		#region Serialized fields
 		[SerializeField] private ProtagonistProfile profile;
-		[SerializeField] private Transform head;
+		[SerializeField] private Transform head, eye;
 		#endregion
 
 		#region Properties
@@ -19,12 +19,13 @@ namespace Game
 			StartControl();
 		}
 
+		protected void Update()
+		{
+			UpdateInteraction();
+		}
+
 		protected void OnTriggerEnter(Collider other)
 		{
-			if(other.gameObject.layer == LayerMask.NameToLayer("Passing Trigger"))
-			{
-				Game.Instance.OnProtagonistEnterPassingTrigger(other);
-			}
 			if(other.gameObject.layer == LayerMask.NameToLayer("Safehouse Trigger"))
 			{
 				Game.Instance.OnProtagonistEnterSafehouseTrigger(other);

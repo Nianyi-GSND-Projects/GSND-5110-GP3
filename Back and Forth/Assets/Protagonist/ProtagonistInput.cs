@@ -20,6 +20,7 @@ namespace Game
 
 			MovementEnabled = true;
 			OrientationEnabled = true;
+			InteractionEnabled = true;
 		}
 
 		protected void FixedUpdate()
@@ -92,6 +93,18 @@ namespace Game
 			if(protagonist.Profile.invertY)
 				delta.y = -delta.y;
 			protagonist.RotateDelta(delta);
+		}
+		#endregion
+
+		#region Interaction
+		public bool InteractionEnabled
+		{
+			get => GetActionMapEnabled("Interaction");
+			set => SetActionMapEnabled("Interaction", value);
+		}
+
+		protected void OnInteract() {
+			protagonist.Interact();
 		}
 		#endregion
 	}
