@@ -101,6 +101,16 @@ namespace Game
 			yield return new WaitForSeconds(1.0f);
 
 			ResetPlayerPosition(index);
+			RevertScene();
+		}
+		#endregion
+
+		#region Functions
+		private void RevertScene() {
+			foreach(var revertable in FindObjectsOfType<Revertable>()) {
+				revertable.SendMessage("Revert");
+			}
+			Debug.Log("Scene reverted.");
 		}
 		#endregion
 	}

@@ -77,7 +77,7 @@ namespace Game
 			}
 		}
 
-		private void StartLevel(int index, bool resetPlayer)
+		private void StartLevel(int index)
 		{
 			if(index < 0 || index >= levels.Length)
 			{
@@ -90,8 +90,6 @@ namespace Game
 
 			currentLevelIndex = index;
 			CurrentLevel.gameObject.SetActive(true);
-			if(resetPlayer)
-				ResetPlayerPosition(index);
 			CurrentLevel.SendMessage("OnStart");
 
 			levelRunningCoroutine = StartCoroutine(LevelRunningCoroutine(CurrentLevel));
@@ -111,9 +109,13 @@ namespace Game
 			}
 			status.Visible = false;
 
+			string levelName = CurrentLevel.name;
+
 			CurrentLevel.SendMessage("OnEnd");
 			CurrentLevel.gameObject.SetActive(false);
 			currentLevelIndex = null;
+
+			Debug.Log($"Level \"{levelName}\" ended.");
 		}
 
 		private void PassLevel()
@@ -138,7 +140,7 @@ namespace Game
 				return;
 			}
 
-			StartLevel(index, false);
+			StartLevel(index);
 		}
 		#endregion
 	}
