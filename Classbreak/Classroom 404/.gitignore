@@ -1,0 +1,18 @@
+# Unity
+/[Ll]ibrary
+/[Ll]ogs
+/[Oo]bj
+/[Tt]emp
+/[Uu]serSettings
+
+# Mac OS
+/**/.DS_Store
+
+# Visual Studio
+/.vs
+/.vsconfig
+/*.sln
+/*.csproj
+
+# Rider
+/**/.idea
