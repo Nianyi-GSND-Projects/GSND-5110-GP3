@@ -32,6 +32,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.75
       objectReference: {fileID: 0}
+    - target: {fileID: 1039856440539813804, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_BoxSize.x
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1039856440539813804, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_BoxSize.z
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1446861027340490512, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
       value: 6
@@ -43,6 +51,14 @@ PrefabInstance:
     - target: {fileID: 1446861027340490512, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666402193399504471, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666402193399504471, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3155658375200730012, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
@@ -115,6 +131,14 @@ PrefabInstance:
     - target: {fileID: 7168369991765249777, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452756172699537092, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxSize.x
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452756172699537092, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxSize.z
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 7536902839770182254, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Size.x
