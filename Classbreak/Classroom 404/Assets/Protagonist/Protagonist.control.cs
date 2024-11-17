@@ -2,21 +2,18 @@ using UnityEngine;
 
 namespace Game
 {
-	[RequireComponent(typeof(CapsuleCollider))]
-	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(CharacterController))]
 	public partial class Protagonist
 	{
 		#region Fields
-		private new CapsuleCollider collider;
-		private new Rigidbody rigidbody;
+		private new CharacterController controller;
 		private ProtagonistInput input;
 		#endregion
 
 		#region Life cycle
 		private void StartControl()
 		{
-			collider = GetComponent<CapsuleCollider>();
-			rigidbody = GetComponent<Rigidbody>();
+			controller = GetComponent<CharacterController>();
 			input = GetComponent<ProtagonistInput>();
 		}
 		#endregion
@@ -42,10 +39,10 @@ namespace Game
 		}
 
 		public void AlignTo(Transform target) {
+			controller.enabled = false;
 			transform.position = target.position;
 			transform.rotation = Quaternion.LookRotation(target.forward, -Physics.gravity);
-			if(rigidbody)
-				rigidbody.velocity = Vector3.zero;
+			controller.enabled = true;
 		}
 
 		/**
@@ -55,8 +52,7 @@ namespace Game
 		 */
 		public void MoveVelocity(Vector3 velocity)
 		{
-			rigidbody.velocity = Vector3.Project(rigidbody.velocity, Physics.gravity) +
-				Vector3.ProjectOnPlane(velocity, Physics.gravity);
+			controller.SimpleMove(velocity);
 		}
 
 		/**
@@ -77,15 +73,6 @@ namespace Game
 			else
 				headAngles.x = Mathf.Max(headAngles.x + delta.y, 360.0f - clamp);
 			head.localEulerAngles = headAngles;
-		}
-
-		public void Jump(float height)
-		{
-			if(height <= 0.0f)
-				return;
-
-			float speed = Mathf.Sqrt(2.0f * height * Physics.gravity.magnitude);
-			rigidbody.AddForce(Physics.gravity.normalized * -speed, ForceMode.VelocityChange);
 		}
 		#endregion
 	}

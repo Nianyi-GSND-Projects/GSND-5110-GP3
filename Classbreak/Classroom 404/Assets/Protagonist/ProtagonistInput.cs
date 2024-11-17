@@ -75,10 +75,6 @@ namespace Game
 			var raw = value.Get<Vector2>();
 			localMovementVelocity = new Vector3(raw.x, 0, raw.y) * protagonist.Profile.baseMovementSpeed;
 		}
-
-		protected void OnJump() {
-			protagonist.Jump(protagonist.Profile.jumpHeight);
-		}
 		#endregion
 
 		#region Orientation
