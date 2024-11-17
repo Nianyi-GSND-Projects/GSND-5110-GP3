@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Game
 {
@@ -17,7 +18,7 @@ namespace Game
 		public Protagonist Protagonist => protagonist;
 		#endregion
 
-		#region Life cycle
+		#region Unity events
 		protected void Awake()
 		{
 			instance = this;
@@ -34,6 +35,64 @@ namespace Game
 			LevelStart();
 
 			Debug.Log("Game started.");
+		}
+		#endregion
+
+		#region Life cycle
+		protected void OnPlayerEnterClassroom(Classroom classroom)
+		{
+			if(CurrentLevel != null)
+			{
+				if(classroom == CurrentLevel.Destination)
+					PassLevel();
+			}
+		}
+
+		protected void OnPlayerExitClassroom(Classroom classroom)
+		{
+			if(CurrentLevel == null)
+			{
+				StartNextLevel();
+			}
+		}
+
+		private IEnumerator LevelRunningCoroutine(Level level)
+		{
+			float levelTime = defaultLevelTime;
+
+			// Show the status UI.
+			status.RemainingTime = levelTime;
+			status.Destination = CurrentLevel.Destination.name;
+			status.Warning = false;
+			status.Visible = true;
+
+			// Update the status UI.
+			for(float startTime = Time.time, elasped; (elasped = Time.time - startTime) < levelTime;)
+			{
+				float remaining = levelTime - elasped;
+				status.RemainingTime = remaining;
+				if(remaining <= warningTime)
+				{
+					status.Warning = true;
+				}
+				yield return new WaitForEndOfFrame();
+			}
+
+			// Time's out.
+			status.RemainingTime = 0.0f;
+			StartCoroutine(TimeOutCoroutine());
+		}
+
+		private IEnumerator TimeOutCoroutine()
+		{
+			Debug.Log("Time's up for this cycle, restarting the current level.");
+
+			int index = currentLevelIndex.Value;
+			EndCurrentLevel();
+
+			yield return new WaitForSeconds(1.0f);
+
+			ResetPlayerPosition(index);
 		}
 		#endregion
 	}

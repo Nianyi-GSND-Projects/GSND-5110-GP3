@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System.Linq;
 
 namespace Game
@@ -123,75 +122,24 @@ namespace Game
 			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
 			lastPassedLevelIndex = currentLevelIndex;
 			EndCurrentLevel();
-			if(lastPassedLevelIndex + 1 == levels.Length) {
+			if(lastPassedLevelIndex + 1 == levels.Length)
+			{
 				Debug.Log($"All levels are passed. Game finished.");
 			}
 		}
 
-		private void StartNextLevel() {
+		private void StartNextLevel()
+		{
 			int index = 0;
 			if(lastPassedLevelIndex != null)
 				index = lastPassedLevelIndex.Value + 1;
-			if(index >= levels.Length) {
-				Debug.LogError($"All levels are passed, cannot start next level.");
+			if(index >= levels.Length)
+			{
+				Debug.LogWarning($"All levels are passed, cannot start next level.");
 				return;
 			}
 
 			StartLevel(index, false);
-		}
-
-		private IEnumerator LevelRunningCoroutine(Level level)
-		{
-			float levelTime = defaultLevelTime;
-
-			// Show the status UI.
-			status.RemainingTime = levelTime;
-			status.Destination = CurrentLevel.Destination.name;
-			status.Warning = false;
-			status.Visible = true;
-
-			// Update the status UI.
-			for(float startTime = Time.time, elasped; (elasped = Time.time - startTime) < levelTime; ) {
-				float remaining = levelTime - elasped;
-				status.RemainingTime = remaining;
-				if(remaining <= warningTime) {
-					status.Warning = true;
-				}
-				yield return new WaitForEndOfFrame();
-			}
-
-			// Time's out.
-			status.RemainingTime = 0.0f;
-			StartCoroutine(TimeOutCoroutine());
-		}
-
-		private IEnumerator TimeOutCoroutine() {
-			Debug.Log("Time's up for this cycle, restarting the current level.");
-			
-			int index = currentLevelIndex.Value;
-			EndCurrentLevel();
-
-			yield return new WaitForSeconds(1.0f);
-
-			ResetPlayerPosition(index);
-		}
-		#endregion
-
-		#region Message handlers
-		protected void OnPlayerEnterClassroom(Classroom classroom)
-		{
-			if(CurrentLevel != null) {
-				if(classroom == CurrentLevel.Destination)
-					PassLevel();
-			}
-		}
-
-		protected void OnPlayerExitClassroom(Classroom classroom)
-		{
-			if(CurrentLevel == null)
-			{
-				StartNextLevel();
-			}
 		}
 		#endregion
 	}
