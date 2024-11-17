@@ -6,7 +6,7 @@ namespace Game
 	public partial class Protagonist
 	{
 		#region Fields
-		private new CharacterController controller;
+		private CharacterController controller;
 		private ProtagonistInput input;
 		#endregion
 

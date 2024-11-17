@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384c4d03a551c44448145f4093304119, type: 3}
   m_Name: ScreenSpaceReflection
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 0
     m_Value: 1
@@ -300,8 +300,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   usedAlgorithm:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   depthBufferThickness:
     m_OverrideState: 0
     m_Value: 0.01
@@ -401,8 +401,25 @@ MonoBehaviour:
   - {fileID: -3237607501466054158}
   - {fileID: 4610518350695852236}
   - {fileID: -890597596592249922}
+  - {fileID: 3811361013380524890}
   - {fileID: -2772942358000310891}
   - {fileID: -3709461081706982263}
+--- !u!114 &3811361013380524890
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e17fad69ea181b4483974138b566975, type: 3}
+  m_Name: ScreenSpaceRefraction
+  m_EditorClassIdentifier: 
+  active: 0
+  screenFadeDistance:
+    m_OverrideState: 0
+    m_Value: 0.1
 --- !u!114 &3866883247645405469
 MonoBehaviour:
   m_ObjectHideFlags: 3
