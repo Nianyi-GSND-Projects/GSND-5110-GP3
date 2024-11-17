@@ -34,11 +34,12 @@ namespace Game
 			protagonist = FindObjectOfType<Protagonist>();
 			LevelStart();
 
+			StartCoroutine(GameStartCoroutine());
 			Debug.Log("Game started.");
 		}
 		#endregion
 
-		#region Life cycle
+		#region Message handlers
 		protected void OnPlayerEnterClassroom(Classroom classroom)
 		{
 			if(CurrentLevel != null)
@@ -54,6 +55,13 @@ namespace Game
 			{
 				StartNextLevel();
 			}
+		}
+		#endregion
+
+		#region Life cycle
+		private IEnumerator GameStartCoroutine() {
+			yield return new WaitForSeconds(2.0f);
+			StartNextLevel();
 		}
 
 		private IEnumerator LevelRunningCoroutine(Level level)

@@ -17,4 +17,4 @@ MonoBehaviour:
   invertY: 1
   zenithClamp: 90
   jumpHeight: 1
-  interactionDistance: 2
+  interactionDistance: 5

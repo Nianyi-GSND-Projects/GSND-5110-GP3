@@ -34,7 +34,8 @@ namespace Game
 			if(!Physics.Raycast(ray, out RaycastHit hit, Profile.interactionDistance, ~0, QueryTriggerInteraction.Ignore))
 				return;
 			var target = hit.collider.transform;
-			if(!target.TryGetComponent<Interactable>(out var interactable))
+			Interactable interactable = target.GetComponentInParent<Interactable>();
+			if(interactable == null)
 				return;
 			focused = interactable;
 			focusPoint = hit.point;

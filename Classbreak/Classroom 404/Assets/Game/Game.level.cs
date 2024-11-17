@@ -57,7 +57,6 @@ namespace Game
 			{
 				level.gameObject.SetActive(false);
 			}
-			Invoke("StartNextLevel", 2.0f);
 		}
 		#endregion
 
