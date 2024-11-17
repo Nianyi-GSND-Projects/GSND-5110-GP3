@@ -1,6 +1,6 @@
 using UnityEngine;
+using System.Collections;
 using System.Linq;
-using System;
 
 namespace Game
 {
@@ -9,12 +9,14 @@ namespace Game
 		#region Serialized fields
 		[Header("Level")]
 		[SerializeField][Min(0)] private float defaultLevelTime = 60.0f;
+		[SerializeField][Min(0)] private float warningTime = 10.0f;
 		[SerializeField] private Level[] levels;
 		#endregion
 
 		#region Fields
 		private int? currentLevelIndex = null;
 		private int? lastPassedLevelIndex = null;
+		private Coroutine levelRunningCoroutine = null;
 		#endregion
 
 		#region Properties
@@ -56,17 +58,25 @@ namespace Game
 			{
 				level.gameObject.SetActive(false);
 			}
-			Invoke("StartFirstLevel", 2.0f);
+			Invoke("StartNextLevel", 2.0f);
 		}
 		#endregion
 
 		#region Functions
-		protected void StartFirstLevel()
+		private void ResetPlayerPosition(int index)
 		{
-			Debug.Log("Starting first level.");
-			lastPassedLevelIndex = null;
-			currentLevelIndex = null;
-			StartLevel(0, false);
+			Level level = levels[index];
+			Debug.Log($"{level.Departure}, {level.Departure.SpawnPoint}");
+			Transform spawnPoint = null;
+			if(level != null && level.Departure != null)
+				spawnPoint = level.Departure.SpawnPoint;
+			else if(LastPassedLevel != null && LastPassedLevel.Destination != null)
+				spawnPoint = LastPassedLevel.Destination.SpawnPoint;
+			if(spawnPoint != null)
+			{
+				Debug.Log($"Resetting player's position to {spawnPoint}.", spawnPoint);
+				Protagonist.AlignTo(spawnPoint);
+			}
 		}
 
 		private void StartLevel(int index, bool resetPlayer)
@@ -83,16 +93,10 @@ namespace Game
 			currentLevelIndex = index;
 			CurrentLevel.gameObject.SetActive(true);
 			if(resetPlayer)
-			{
-				Transform spawnPoint = null;
-				if(CurrentLevel.Departure != null)
-					spawnPoint = CurrentLevel.Departure.SpawnPoint;
-				else if(LastPassedLevel != null && LastPassedLevel.Destination != null)
-					spawnPoint = LastPassedLevel.Destination.SpawnPoint;
-				if(spawnPoint != null)
-					Protagonist.AlignTo(spawnPoint);
-			}
+				ResetPlayerPosition(index);
 			CurrentLevel.SendMessage("OnStart");
+
+			levelRunningCoroutine = StartCoroutine(LevelRunningCoroutine(CurrentLevel));
 
 			Debug.Log($"Level \"{CurrentLevel.name}\" started.");
 		}
@@ -101,6 +105,13 @@ namespace Game
 		{
 			if(CurrentLevel == null)
 				return;
+
+			if(levelRunningCoroutine != null)
+			{
+				StopCoroutine(levelRunningCoroutine);
+				levelRunningCoroutine = null;
+			}
+			status.Visible = false;
 
 			CurrentLevel.SendMessage("OnEnd");
 			CurrentLevel.gameObject.SetActive(false);
@@ -112,19 +123,9 @@ namespace Game
 			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
 			lastPassedLevelIndex = currentLevelIndex;
 			EndCurrentLevel();
-		}
-
-		private void RestartCurrentLevel()
-		{
-			if(CurrentLevel == null)
-			{
-				Debug.LogError("No active level, cannot restart current level.");
-				return;
+			if(lastPassedLevelIndex + 1 == levels.Length) {
+				Debug.Log($"All levels are passed. Game finished.");
 			}
-			Debug.Log($"Restarting level \"{CurrentLevel.name}\".");
-			int index = currentLevelIndex.Value;
-			EndCurrentLevel();
-			StartLevel(index, true);
 		}
 
 		private void StartNextLevel() {
@@ -137,6 +138,42 @@ namespace Game
 			}
 
 			StartLevel(index, false);
+		}
+
+		private IEnumerator LevelRunningCoroutine(Level level)
+		{
+			float levelTime = defaultLevelTime;
+
+			// Show the status UI.
+			status.RemainingTime = levelTime;
+			status.Destination = CurrentLevel.Destination.name;
+			status.Warning = false;
+			status.Visible = true;
+
+			// Update the status UI.
+			for(float startTime = Time.time, elasped; (elasped = Time.time - startTime) < levelTime; ) {
+				float remaining = levelTime - elasped;
+				status.RemainingTime = remaining;
+				if(remaining <= warningTime) {
+					status.Warning = true;
+				}
+				yield return new WaitForEndOfFrame();
+			}
+
+			// Time's out.
+			status.RemainingTime = 0.0f;
+			StartCoroutine(TimeOutCoroutine());
+		}
+
+		private IEnumerator TimeOutCoroutine() {
+			Debug.Log("Time's up for this cycle, restarting the current level.");
+			
+			int index = currentLevelIndex.Value;
+			EndCurrentLevel();
+
+			yield return new WaitForSeconds(1.0f);
+
+			ResetPlayerPosition(index);
 		}
 		#endregion
 

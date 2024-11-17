@@ -9,13 +9,22 @@ namespace Game
 		#endregion
 
 		#region Properties
-		public Transform SpawnPoint => spawnPoint ?? transform;
+		public Transform SpawnPoint
+		{
+			get
+			{
+				if(spawnPoint != null)
+					return spawnPoint;
+				return transform;
+			}
+		}
 		#endregion
 
 		#region Life cycle
 		protected void OnTriggerEnter(Collider other)
 		{
-			if(other.gameObject == Game.Instance.Protagonist.gameObject) {
+			if(other.gameObject == Game.Instance.Protagonist.gameObject)
+			{
 				Debug.Log($"Player entered {name}.", this);
 				Game.Instance.SendMessage("OnPlayerEnterClassroom", this);
 			}
@@ -25,7 +34,7 @@ namespace Game
 		{
 			if(other.gameObject == Game.Instance.Protagonist.gameObject)
 			{
-				Debug.Log($"Player entered {name}.", this);
+				Debug.Log($"Player exited {name}.", this);
 				Game.Instance.SendMessage("OnPlayerExitClassroom", this);
 			}
 		}

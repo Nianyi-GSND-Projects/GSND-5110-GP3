@@ -473,7 +473,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3421675402868474637, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_Name
-      value: '#409'
+      value: Room H
       objectReference: {fileID: 0}
     - target: {fileID: 5197280418177792973, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -736,7 +736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: '#408'
+      value: Room G
       objectReference: {fileID: 0}
     - target: {fileID: 7168369991765249777, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
@@ -1026,6 +1026,7 @@ MonoBehaviour:
   hourHand: {fileID: 907562525}
   minuteHand: {fileID: 904171555}
   secondHand: {fileID: 989208734}
+  warningColor: {r: 1, g: 0.5, b: 0.5, a: 1}
   destination: {fileID: 1431968185}
   remainingTime: {fileID: 1625012177}
 --- !u!1 &349417022
@@ -1637,7 +1638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989c8d76e789474ea275c86353bd569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultLevelTime: 60
+  defaultLevelTime: 15
+  warningTime: 5
   levels:
   - {fileID: 849215223}
   - {fileID: 103655441}
@@ -1652,7 +1654,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: Male's Room
+      value: Men's Room
       objectReference: {fileID: 0}
     - target: {fileID: 7168369991765249777, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1714,7 +1716,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: '#405 Game Lab'
+      value: Game Lab
       objectReference: {fileID: 0}
     - target: {fileID: 1019830017526189237, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
@@ -2018,7 +2020,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: Female's Room
+      value: Women's Room
       objectReference: {fileID: 0}
     - target: {fileID: 714990985284661189, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
@@ -2104,7 +2106,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3421675402868474637, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_Name
-      value: '#407'
+      value: Room F
       objectReference: {fileID: 0}
     - target: {fileID: 5197280418177792973, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2171,7 +2173,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: '#403'
+      value: Room C
       objectReference: {fileID: 0}
     - target: {fileID: 7168369991765249777, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
@@ -2809,7 +2811,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: '#406'
+      value: Room E
       objectReference: {fileID: 0}
     - target: {fileID: 7168369991765249777, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
@@ -3207,7 +3209,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3421675402868474637, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_Name
-      value: '#401'
+      value: Room A
       objectReference: {fileID: 0}
     - target: {fileID: 5197280418177792973, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3285,7 +3287,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: '#404'
+      value: Room D
       objectReference: {fileID: 0}
     - target: {fileID: 7168369991765249777, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
@@ -3807,7 +3809,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
-      value: '#402'
+      value: Room B
       objectReference: {fileID: 0}
     - target: {fileID: 7168369991765249777, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
