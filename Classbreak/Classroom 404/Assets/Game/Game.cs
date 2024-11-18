@@ -46,7 +46,7 @@ namespace Game
 			if(CurrentLevel != null)
 			{
 				if(classroom == CurrentLevel.Destination)
-					PassLevel();
+					StartCoroutine(PassLevelCoroutine());
 			}
 		}
 
@@ -98,6 +98,35 @@ namespace Game
 			// Time's out.
 			status.RemainingTime = 0.0f;
 			StartCoroutine(TimeOutCoroutine());
+		}
+
+		private void StopRunningLevel()
+		{
+			if(levelRunningCoroutine != null)
+			{
+				StopCoroutine(levelRunningCoroutine);
+				levelRunningCoroutine = null;
+			}
+			status.Visible = false;
+		}
+
+		private IEnumerator PassLevelCoroutine()
+		{
+			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
+			lastPassedLevelIndex = currentLevelIndex;
+			StopRunningLevel();
+
+			yield return new WaitForSeconds(1.0f);
+
+			if(lastPassedLevelIndex + 1 != levels.Length)
+			{
+				EndCurrentLevel();
+			}
+			else
+			{
+				Debug.Log($"All levels are passed. Game finished.");
+				// TODO: Finish the game.
+			}
 		}
 
 		private IEnumerator TimeOutCoroutine()

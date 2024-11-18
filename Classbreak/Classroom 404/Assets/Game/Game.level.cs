@@ -103,12 +103,7 @@ namespace Game
 			if(CurrentLevel == null)
 				return;
 
-			if(levelRunningCoroutine != null)
-			{
-				StopCoroutine(levelRunningCoroutine);
-				levelRunningCoroutine = null;
-			}
-			status.Visible = false;
+			StopRunningLevel();
 
 			string levelName = CurrentLevel.name;
 
@@ -117,17 +112,6 @@ namespace Game
 			currentLevelIndex = null;
 
 			Debug.Log($"Level \"{levelName}\" ended.");
-		}
-
-		private void PassLevel()
-		{
-			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
-			lastPassedLevelIndex = currentLevelIndex;
-			EndCurrentLevel();
-			if(lastPassedLevelIndex + 1 == levels.Length)
-			{
-				Debug.Log($"All levels are passed. Game finished.");
-			}
 		}
 
 		private void StartNextLevel()
