@@ -57,7 +57,7 @@ namespace NaniCore {
 				return false;
 			switch(collider) {
 				default:
-					Debug.LogWarning($"Mesh tile hollow object does not support collider of type {collider.GetType().Name}!");
+					//Debug.LogWarning($"Mesh tile hollow object does not support collider of type {collider.GetType().Name}!");
 					return false;
 				case BoxCollider box: {
 						Vector3 local = box.transform.worldToLocalMatrix.MultiplyPoint(worldPosition);

@@ -64,7 +64,6 @@ namespace Game
 		private void ResetPlayerPosition(int index)
 		{
 			Level level = levels[index];
-			Debug.Log($"{level.Departure}, {level.Departure.SpawnPoint}");
 			Transform spawnPoint = null;
 			if(level != null && level.Departure != null)
 				spawnPoint = level.Departure.SpawnPoint;

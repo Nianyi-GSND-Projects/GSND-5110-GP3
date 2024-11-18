@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57574aa85a685143a27b64970d65a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  departure: {fileID: 622482441}
+  departure: {fileID: 0}
   destination: {fileID: 147356122}
   onStart:
     m_PersistentCalls:
@@ -1723,8 +1723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989c8d76e789474ea275c86353bd569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultLevelTime: 60
-  warningTime: 10
+  defaultLevelTime: 10
+  warningTime: 5
   levels:
   - {fileID: 849215223}
   - {fileID: 103655441}
