@@ -3,11 +3,15 @@ using UnityEngine.Events;
 
 namespace Game
 {
-	public class Revertable : MonoBehaviour
+	public interface IRevertable {
+		public void Revert();
+	}
+
+	public class Revertable : MonoBehaviour, IRevertable
 	{
 		[SerializeField] private UnityEvent onRevert;
 
-		protected void Revert() {
+		public void Revert() {
 			onRevert.Invoke();
 		}
 	}

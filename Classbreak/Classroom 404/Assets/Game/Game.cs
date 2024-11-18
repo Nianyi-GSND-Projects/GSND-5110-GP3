@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 namespace Game
 {
@@ -59,7 +60,9 @@ namespace Game
 		#endregion
 
 		#region Life cycle
-		private IEnumerator GameStartCoroutine() {
+		private IEnumerator GameStartCoroutine()
+		{
+			RevertScene();
 			yield return new WaitForSeconds(2.0f);
 			StartNextLevel();
 		}
@@ -111,18 +114,27 @@ namespace Game
 		#endregion
 
 		#region Functions
-		private void RevertScene() {
-			foreach(var revertable in FindObjectsOfType<Revertable>()) {
-				revertable.SendMessage("Revert");
-			}
+		private void RevertScene()
+		{
+			foreach(var revertable in FindObjectsOfType<MonoBehaviour>().OfType<IRevertable>())
+				revertable.Revert();
+
 			Debug.Log("Scene reverted.");
 		}
 
-		private void ShowMobile(float duration = 5.0f) {
+		public void RevertDoorPlates()
+		{
+			foreach(var classroom in FindObjectsOfType<Classroom>())
+				classroom.RevertDoorPlateNumber();
+		}
+
+		private void ShowMobile(float duration = 5.0f)
+		{
 			StartCoroutine(ShowMobileCoroutine(duration));
 		}
 
-		private IEnumerator ShowMobileCoroutine(float duration = 5.0f) {
+		private IEnumerator ShowMobileCoroutine(float duration = 5.0f)
+		{
 			mobile.Visible = true;
 			yield return new WaitForSeconds(duration);
 			mobile.Visible = false;

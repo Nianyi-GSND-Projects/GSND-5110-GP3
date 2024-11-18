@@ -84,9 +84,11 @@ namespace Game
 				return;
 			}
 
+			// End current level.
 			if(CurrentLevel != null)
 				EndCurrentLevel();
 
+			// Start new level.
 			currentLevelIndex = index;
 			CurrentLevel.gameObject.SetActive(true);
 			CurrentLevel.SendMessage("OnStart");

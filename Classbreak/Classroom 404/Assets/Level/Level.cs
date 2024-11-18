@@ -16,11 +16,15 @@ namespace Game
 		#endregion
 
 		#region Message handlers
-		protected void OnStart() {
+		protected void OnStart()
+		{
+			Destination.SetDoorPlateNumber("404");
 			onStart?.Invoke();
 		}
 
-		protected void OnEnd() {
+		protected void OnEnd()
+		{
+			Game.Instance.RevertDoorPlates();
 			onEnd?.Invoke();
 		}
 		#endregion
