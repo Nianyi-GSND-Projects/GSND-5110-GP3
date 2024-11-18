@@ -68,9 +68,14 @@ namespace Game
 		{
 			float levelTime = defaultLevelTime;
 
+			// Show the mobile notification.
+			ShowMobile();
+
+			// Wait for a few seconds.
+			yield return new WaitForSeconds(3.0f);
+
 			// Show the status UI.
 			status.RemainingTime = levelTime;
-			status.Destination = CurrentLevel.Destination.name;
 			status.Warning = false;
 			status.Visible = true;
 
@@ -111,6 +116,16 @@ namespace Game
 				revertable.SendMessage("Revert");
 			}
 			Debug.Log("Scene reverted.");
+		}
+
+		private void ShowMobile(float duration = 5.0f) {
+			StartCoroutine(ShowMobileCoroutine(duration));
+		}
+
+		private IEnumerator ShowMobileCoroutine(float duration = 5.0f) {
+			mobile.Visible = true;
+			yield return new WaitForSeconds(duration);
+			mobile.Visible = false;
 		}
 		#endregion
 	}

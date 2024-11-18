@@ -619,7 +619,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Game Lab
+  m_Text: Room 404
 --- !u!222 &223311126
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1043,7 +1043,6 @@ MonoBehaviour:
   minuteHand: {fileID: 904171555}
   secondHand: {fileID: 989208734}
   warningColor: {r: 1, g: 0.5, b: 0.5, a: 1}
-  destination: {fileID: 1431968185}
   remainingTime: {fileID: 1625012177}
 --- !u!1 &349417022
 GameObject:
@@ -1538,6 +1537,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 622482438}
     m_Modifications:
+    - target: {fileID: 2770626266892423737, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7500001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770626266892423737, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
     - target: {fileID: 3997979726561706350, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
       propertyPath: m_Name
       value: Left Door
@@ -1722,6 +1729,7 @@ MonoBehaviour:
   - {fileID: 849215223}
   - {fileID: 103655441}
   status: {fileID: 344161209}
+  mobile: {fileID: 1229922414}
 --- !u!1001 &607197708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2162,6 +2170,10 @@ PrefabInstance:
     - target: {fileID: 1599873438753078788, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -4.2499824
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7499999
       objectReference: {fileID: 0}
     - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3311,6 +3323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1229922413}
+  - component: {fileID: 1229922414}
   m_Layer: 5
   m_Name: Mobile UI
   m_TagString: Untagged
@@ -3328,7 +3341,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1215277818}
   - {fileID: 1382327368}
@@ -3340,6 +3353,19 @@ RectTransform:
   m_AnchoredPosition: {x: -25, y: 400}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1229922414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229922412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bb32d32ba925643b3b3062bda3456f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carrier: {fileID: 1215277821}
 --- !u!1001 &1259971995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3668,7 +3694,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Game Lab
+  m_Text: Room 404
 --- !u!222 &1431968186
 CanvasRenderer:
   m_ObjectHideFlags: 0
