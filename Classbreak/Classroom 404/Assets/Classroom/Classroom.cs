@@ -7,6 +7,7 @@ namespace Game
 		#region Serialized fields
 		[SerializeField] private string number = "404";
 		[SerializeField] private Transform spawnPoint;
+		[SerializeField] private TMPro.TMP_Text mapLabel;
 		#endregion
 
 		#region Properties
@@ -51,6 +52,8 @@ namespace Game
 			foreach(var doorplate in transform.GetComponentsInChildren<DoorPlate>()) {
 				doorplate.Number = number;
 			}
+			if(mapLabel != null)
+				mapLabel.text = number;
 		}
 
 		public void RevertDoorPlateNumber()

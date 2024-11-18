@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e3b830a475b6c4f8d23635ba6dfc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 404
   spawnPoint: {fileID: 0}
 --- !u!1 &359460310352270266
 GameObject:
@@ -502,7 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666402193399504471}
   - component: {fileID: 1171949865031753738}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Light Probes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +697,7 @@ GameObject:
   - component: {fileID: 3157842048653903383}
   - component: {fileID: 1039856440539813804}
   - component: {fileID: 7452756172699537092}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Reflection Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
