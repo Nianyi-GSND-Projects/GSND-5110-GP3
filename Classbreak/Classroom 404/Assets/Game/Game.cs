@@ -63,6 +63,7 @@ namespace Game
 		private IEnumerator GameStartCoroutine()
 		{
 			RevertScene();
+			ResetPlayerPosition(0);
 			yield return new WaitForSeconds(2.0f);
 			StartNextLevel();
 		}
