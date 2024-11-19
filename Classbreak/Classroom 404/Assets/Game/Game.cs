@@ -116,17 +116,16 @@ namespace Game
 			lastPassedLevelIndex = currentLevelIndex;
 			StopRunningLevel();
 
-			yield return new WaitForSeconds(1.0f);
+			if(lastPassedLevelIndex + 1 == levels.Length)
+			{
+				StartCoroutine(FinishGameCoroutine());
+				yield break;
+			}
 
-			if(lastPassedLevelIndex + 1 != levels.Length)
-			{
-				EndCurrentLevel();
-			}
-			else
-			{
-				Debug.Log($"All levels are passed. Game finished.");
-				// TODO: Finish the game.
-			}
+			// TODO: Only the "OnEnd" event of the level should be delayed.
+			// Or find a way to deal with the leve-altering level designs.
+			yield return new WaitForSeconds(1.0f);
+			EndCurrentLevel();
 		}
 
 		private IEnumerator TimeOutCoroutine()
@@ -140,6 +139,13 @@ namespace Game
 
 			ResetPlayerPosition(index);
 			RevertScene();
+		}
+
+		private IEnumerator FinishGameCoroutine()
+		{
+			Debug.Log($"All levels are passed. Game finished.");
+			yield break;
+			// TODO
 		}
 		#endregion
 
