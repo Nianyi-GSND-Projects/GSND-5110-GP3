@@ -3,11 +3,15 @@ using UnityEngine;
 namespace Game
 {
 	[RequireComponent(typeof(CharacterController))]
+	[RequireComponent(typeof(Animator))]
 	public partial class Protagonist
 	{
 		#region Fields
 		private CharacterController controller;
 		private ProtagonistInput input;
+		private Animator animator;
+
+		private bool hasReceivedInput = false;
 		#endregion
 
 		#region Life cycle
@@ -15,6 +19,12 @@ namespace Game
 		{
 			controller = GetComponent<CharacterController>();
 			input = GetComponent<ProtagonistInput>();
+			animator = GetComponent<Animator>();
+		}
+
+		private void FixedUpdateControl() {
+			animator.SetBool("IsMoving", hasReceivedInput);
+			hasReceivedInput = false;
 		}
 		#endregion
 
@@ -52,6 +62,7 @@ namespace Game
 		 */
 		public void MoveVelocity(Vector3 velocity)
 		{
+			hasReceivedInput = velocity.magnitude > Mathf.Epsilon;
 			controller.SimpleMove(velocity);
 		}
 

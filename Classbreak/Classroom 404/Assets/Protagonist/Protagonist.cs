@@ -23,6 +23,11 @@ namespace Game
 		{
 			UpdateInteraction();
 		}
+
+		protected void FixedUpdate()
+		{
+			FixedUpdateControl();
+		}
 		#endregion
 	}
 }
