@@ -16,7 +16,6 @@ namespace Game
 				if(playable != this.playable)
 					return;
 				finished = true;
-				Debug.Log($"{playable} stopped. (t = {Time.time})");
 				playable.stopped -= OnStopped;
 				playable.Stop();
 			}

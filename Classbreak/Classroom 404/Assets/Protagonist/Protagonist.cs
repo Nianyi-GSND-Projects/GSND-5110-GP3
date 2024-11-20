@@ -5,6 +5,7 @@ namespace Game
 	public partial class Protagonist : MonoBehaviour
 	{
 		#region Serialized fields
+		[Header("General")]
 		[SerializeField] private ProtagonistProfile profile;
 		[SerializeField] private Transform head, eye;
 		#endregion
