@@ -7,16 +7,27 @@ namespace Game
 	[RequireComponent(typeof(Protagonist))]
 	public class ProtagonistInput : MonoBehaviour
 	{
+		#region Fields
 		private Protagonist protagonist;
 		private PlayerInput playerInput;
+
+		private PlayerInput PlayerInput
+		{
+			get
+			{
+				if(playerInput == null)
+					playerInput = GetComponent<PlayerInput>();
+				return playerInput;
+			}
+		}
+		#endregion
 
 		#region Life cycle
 		protected void Start()
 		{
 			protagonist = GetComponent<Protagonist>();
 
-			playerInput = GetComponent<PlayerInput>();
-			playerInput.actions = Instantiate(playerInput.actions);
+			PlayerInput.actions = Instantiate(PlayerInput.actions);
 
 			MovementEnabled = true;
 			OrientationEnabled = true;
@@ -42,17 +53,32 @@ namespace Game
 		#region Functions
 		private bool GetActionMapEnabled(string name)
 		{
-			return playerInput.actions.FindActionMap(name).enabled;
+			return PlayerInput.actions.FindActionMap(name).enabled;
 		}
 
 		private void SetActionMapEnabled(string name, bool enabled)
 		{
-			var map = playerInput.actions.FindActionMap(name);
+			var map = PlayerInput.actions.FindActionMap(name);
 			if(enabled)
 				map.Enable();
 			else
 				map.Disable();
 		}
+		#endregion
+
+		#region Interfaces
+		public bool IsInputEnabled
+		{
+			set
+			{
+				enabled = value;
+				PlayerInput.enabled = value;
+			}
+		}
+
+		public void EnableInput() => IsInputEnabled = true;
+
+		public void DisableInput() => IsInputEnabled = false;
 		#endregion
 
 		#region Movement
@@ -78,12 +104,14 @@ namespace Game
 		#endregion
 
 		#region Orientation
-		public bool OrientationEnabled {
+		public bool OrientationEnabled
+		{
 			get => GetActionMapEnabled("Orientation");
 			set => SetActionMapEnabled("Orientation", value);
 		}
 
-		protected void OnOrientDelta(InputValue value) {
+		protected void OnOrientDelta(InputValue value)
+		{
 			var raw = value.Get<Vector2>();
 			Vector2 delta = raw * protagonist.Profile.baseOrientationSpeed;
 			if(protagonist.Profile.invertY)
@@ -99,7 +127,8 @@ namespace Game
 			set => SetActionMapEnabled("Interaction", value);
 		}
 
-		protected void OnInteract() {
+		protected void OnInteract()
+		{
 			protagonist.Interact();
 		}
 		#endregion

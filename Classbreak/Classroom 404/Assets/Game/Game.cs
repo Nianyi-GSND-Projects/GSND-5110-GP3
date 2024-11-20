@@ -6,11 +6,6 @@ namespace Game
 {
 	public partial class Game : MonoBehaviour
 	{
-		#region Singleton
-		static private Game instance;
-		static public Game Instance => instance;
-		#endregion
-
 		#region Fields
 		private Protagonist protagonist;
 		#endregion
@@ -22,12 +17,12 @@ namespace Game
 		#region Unity events
 		protected void Awake()
 		{
-			instance = this;
+			StartSingleton();
 		}
 
 		protected void OnDestroy()
 		{
-			instance = null;
+			EndSingleton();
 		}
 
 		protected void Start()
@@ -63,8 +58,7 @@ namespace Game
 		private IEnumerator GameStartCoroutine()
 		{
 			RevertScene();
-			ResetPlayerPosition(0);
-			yield return new WaitForSeconds(2.0f);
+			yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
 			StartNextLevel();
 		}
 
