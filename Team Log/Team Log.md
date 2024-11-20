@@ -25,3 +25,25 @@ Luckily, we got enough time, and the pitching was not too broken?
 
 We went to Snell and worked together for an entire afternoon to build a minimal playable whitebox prototype.
 It went smoothly; we actually achieved the goal by the end of the day.
+
+## In-class Meeting \#2 - 11/12/2024
+
+Showed Bob the progress we made in the jam session.
+
+## Redirection - 11/16-18/2024
+
+It took us two days to decide to turn to another design.
+The original warehouse setting is replaced by a teaching hall setting.
+
+Nianyi spent his Sunday on making the prototype of the current version.
+
+## In-class Meeting \#3 - 11/19/2024
+
+Showed Bob the new version; he had a trial play and gave many valuable ideas.
+
+The next things we need to do:
+
+- More levels.
+- Scene decoration.
+- Add in the details, like sounds and animations.
+- Playtest.
