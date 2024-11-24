@@ -47,3 +47,14 @@ The next things we need to do:
 - Scene decoration.
 - Add in the details, like sounds and animations.
 - Playtest.
+
+## Weekend Meeting - 11/23/2024
+
+Discussed about and decided what we want to achieve before next live session to show to Bob.
+*\*Bob-oriented Producing\**
+
+- Sadaf:
+	- Decorate the interior area with art resources.
+- Nianyi:
+	- Implement a clearer visual guidance for level transition.
+	- Make the starting & ending animations.
