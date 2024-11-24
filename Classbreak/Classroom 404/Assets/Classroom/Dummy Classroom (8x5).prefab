@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy Classroom (8x5)
       objectReference: {fileID: 0}
+    - target: {fileID: 439295009394680034, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: useChildGroups
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 714990985284661189, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5

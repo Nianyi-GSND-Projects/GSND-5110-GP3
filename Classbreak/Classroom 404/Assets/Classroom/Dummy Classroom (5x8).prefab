@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 7168369991765249777}
   - component: {fileID: 7536902839770182254}
   - component: {fileID: 8781229479675287961}
+  - component: {fileID: 439295009394680034}
   m_Layer: 6
   m_Name: Dummy Classroom (5x8)
   m_TagString: Untagged
@@ -179,6 +180,22 @@ MonoBehaviour:
   number: 404
   spawnPoint: {fileID: 0}
   mapLabel: {fileID: 0}
+--- !u!114 &439295009394680034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299315791139092017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e878d08782e4442a03c5d4b35e9bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useChildGroups: 0
+  subgroups: []
+  useChildLights: 1
+  lights: []
 --- !u!1 &359460310352270266
 GameObject:
   m_ObjectHideFlags: 0

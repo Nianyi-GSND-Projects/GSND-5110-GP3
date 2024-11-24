@@ -523,6 +523,10 @@ PrefabInstance:
       propertyPath: mapLabel
       value: 
       objectReference: {fileID: 607957983}
+    - target: {fileID: 7876904571366913516, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
+      propertyPath: m_Intensity
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8941049051884205935, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7500012
@@ -907,6 +911,10 @@ PrefabInstance:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
       value: Room 409
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_Intensity
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1776,6 +1784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 527694643}
   - component: {fileID: 527694644}
+  - component: {fileID: 527694645}
   m_Layer: 0
   m_Name: Hallway Lights
   m_TagString: Untagged
@@ -1829,6 +1838,22 @@ MonoBehaviour:
   - {fileID: 703353378}
   - {fileID: 811172929}
   - {fileID: 147356121}
+--- !u!114 &527694645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527694642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e878d08782e4442a03c5d4b35e9bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useChildGroups: 0
+  subgroups: []
+  useChildLights: 1
+  lights: []
 --- !u!1 &540466406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,6 +1863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 540466407}
+  - component: {fileID: 540466408}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -1873,6 +1899,22 @@ Transform:
   - {fileID: 147356120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &540466408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540466406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e878d08782e4442a03c5d4b35e9bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useChildGroups: 1
+  subgroups: []
+  useChildLights: 0
+  lights: []
 --- !u!1 &557873842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,6 +2258,7 @@ MonoBehaviour:
   defaultLevelTime: 60
   warningTime: 10
   levels:
+  - {fileID: 1870216325}
   - {fileID: 849215223}
   - {fileID: 103655441}
   - {fileID: 875524219}
@@ -2236,6 +2279,10 @@ PrefabInstance:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
       value: Men's Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_Intensity
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2494,6 +2541,10 @@ PrefabInstance:
     - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Range
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_Intensity
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -2854,6 +2905,10 @@ PrefabInstance:
     - target: {fileID: 1599873438753078788, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -4.2499824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_Intensity
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3274,6 +3329,10 @@ PrefabInstance:
       propertyPath: mapLabel
       value: 
       objectReference: {fileID: 1198994534}
+    - target: {fileID: 7876904571366913516, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
+      propertyPath: m_Intensity
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8941049051884205935, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.75000024
@@ -3319,6 +3378,10 @@ PrefabInstance:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
       value: Room 403
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_Intensity
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4504,6 +4567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room 407
       objectReference: {fileID: 0}
+    - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_Intensity
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7499995
@@ -4642,7 +4709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 4ff2f60fc4100f844a92ff5bf402fa41, type: 2}
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -5485,6 +5552,10 @@ PrefabInstance:
       propertyPath: mapLabel
       value: 
       objectReference: {fileID: 353778912}
+    - target: {fileID: 7876904571366913516, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
+      propertyPath: m_Intensity
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8941049051884205935, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.75
@@ -5832,6 +5903,10 @@ PrefabInstance:
     - target: {fileID: 299315791139092017, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Name
       value: Room 405
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
+      propertyPath: m_Intensity
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6291428879744549459, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6558,7 +6633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_Intensity
-      value: 96.333626
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 5047193226123002064, guid: 6d8a68a5bab6c014ca9990aa0ee69bdd, type: 3}
       propertyPath: m_SpotAngle
@@ -7444,9 +7519,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1870216324}
   - component: {fileID: 1870216325}
-  - component: {fileID: 1870216326}
   m_Layer: 0
-  m_Name: 'TL06: Black-out'
+  m_Name: 'L06: Black-out'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7484,33 +7558,33 @@ MonoBehaviour:
   onStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1870216326}
-        m_TargetAssemblyTypeName: Game.LightOut, Assembly-CSharp
-        m_MethodName: TurnOffAllLights
-        m_Mode: 4
+      - m_Target: {fileID: 540466408}
+        m_TargetAssemblyTypeName: Game.LightGroup, Assembly-CSharp
+        m_MethodName: TurnOff
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 1
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   onEnd:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1870216326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870216323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23308e2c551253f47a5e36fe0784c4d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls:
+      - m_Target: {fileID: 540466408}
+        m_TargetAssemblyTypeName: Game.LightGroup, Assembly-CSharp
+        m_MethodName: TurnOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1885528262
 GameObject:
   m_ObjectHideFlags: 0

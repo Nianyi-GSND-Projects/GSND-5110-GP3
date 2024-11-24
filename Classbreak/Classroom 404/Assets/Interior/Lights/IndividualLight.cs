@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 namespace Game
 {
-	public class Light : MonoBehaviour
+	public class IndividualLight : MonoBehaviour
 	{
 		private struct LightConfig
 		{
@@ -29,6 +30,9 @@ namespace Game
 		private Dictionary<HDAdditionalLightData, LightConfig> lights;
 		private Dictionary<Renderer, RendererConfig> renderers;
 		private float intensity = 1.0f;
+		[SerializeField] private float speed = 2.0f;
+
+		private Coroutine adjustIntensitySmoothlyCoroutine;
 		#endregion
 
 		#region Life cycle
@@ -54,13 +58,11 @@ namespace Game
 					}
 				))
 			);
-
-			Intensity = 0.0f;
 		}
 		#endregion
 
 		#region Properties
-		public float Intensity
+		private float Intensity
 		{
 			get => intensity;
 			set
@@ -75,17 +77,43 @@ namespace Game
 				foreach(var (renderer, config) in renderers)
 				{
 					var mat = renderer.material;
-
 					mat.SetFloat(PropertyNames.emissionIntensity, config.emissionIntensity * value);
-
-					var color = config.emissiveColor;
-					color *= value;
-					color.a = 1.0f;
-					mat.SetColor(PropertyNames.emissionColor, color);
+					mat.SetColor(PropertyNames.emissionColor, config.emissiveColor * value);
 				}
 
 				intensity = value;
 			}
+		}
+		#endregion
+
+		#region Interfaces
+		[ContextMenu("Turn On")] public void TurnOn() => AdjustIntensitySmoothly(1.0f);
+		[ContextMenu("Turn Off")] public void TurnOff() => AdjustIntensitySmoothly(0.0f);
+		#endregion
+
+		#region Functions
+		private void AdjustIntensitySmoothly(float targetIntensity)
+		{
+			if(adjustIntensitySmoothlyCoroutine != null) {
+				StopCoroutine(adjustIntensitySmoothlyCoroutine);
+				adjustIntensitySmoothlyCoroutine = null;
+			}
+			adjustIntensitySmoothlyCoroutine = StartCoroutine(AdjustIntensitySmoothlyCoroutine(targetIntensity));
+		}
+
+		private IEnumerator AdjustIntensitySmoothlyCoroutine(float targetIntensity)
+		{
+			float delta = targetIntensity - Intensity;
+			float totalTime = Mathf.Abs(delta / speed);
+
+			float startIntensity = Intensity;
+			for(float startTime = Time.time, elapsed; (elapsed = Time.time - startTime) < totalTime; ) {
+				Intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsed / totalTime);
+				yield return new WaitForEndOfFrame();
+			}
+			Intensity = targetIntensity;
+
+			adjustIntensitySmoothlyCoroutine = null;
 		}
 		#endregion
 	}
