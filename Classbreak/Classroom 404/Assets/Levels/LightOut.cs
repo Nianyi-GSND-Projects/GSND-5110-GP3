@@ -4,6 +4,10 @@ using System.Collections;
 
 namespace Game
 {
+	/**
+	 * Deprecated.
+	 * Needs to be updated.
+	 */
 	public class LightOut : MonoBehaviour, IRevertable
 	{
 		private struct Record
@@ -12,14 +16,14 @@ namespace Game
 			public float intensity;
 		}
 
-		private Dictionary<Light, Record> records = null;
+		private Dictionary<UnityEngine.Light, Record> records = null;
 		private Coroutine coroutine = null;
 
 		public void TurnOffAllLights(float duration)
 		{
 			records = new();
 
-			foreach(var light in FindObjectsOfType<Light>())
+			foreach(var light in FindObjectsOfType<UnityEngine.Light>())
 			{
 				records.Add(light, new()
 				{
