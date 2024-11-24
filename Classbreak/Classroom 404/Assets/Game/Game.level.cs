@@ -164,7 +164,7 @@ namespace Game
 
 			EndCurrentLevel();
 
-			yield return new WaitForSeconds(1.0f);
+			yield return new WaitForSeconds(Settings.waitAfterPassing);
 
 			// Turn off the lights in the just-passed level's destination classroom.
 			SetLastPassedLevelLight(false);
@@ -176,11 +176,9 @@ namespace Game
 		{
 			float levelTime = defaultLevelTime;
 
-			// Show the mobile notification.
+			// Show the mobile notification for a few seconds.
 			ShowMobile();
-
-			// Wait for a few seconds.
-			yield return new WaitForSeconds(3.0f);
+			yield return new WaitForSeconds(Settings.notificationTime);
 
 			// Show the status UI.
 			status.RemainingTime = levelTime;
@@ -211,7 +209,7 @@ namespace Game
 			int index = currentLevelIndex.Value;
 			EndCurrentLevel(true);
 
-			yield return new WaitForSeconds(1.0f);
+			yield return new WaitForSeconds(Settings.timeOutDelay);
 
 			ResetPlayerPosition(index);
 			RevertScene();

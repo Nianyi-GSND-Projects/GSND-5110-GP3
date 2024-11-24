@@ -8,10 +8,12 @@ namespace Game
 	{
 		#region Fields
 		private Protagonist protagonist;
+		[SerializeField] private GameSettings settings;
 		#endregion
 
 		#region Properties
 		public Protagonist Protagonist => protagonist;
+		public GameSettings Settings => settings;
 		#endregion
 
 		#region Unity events

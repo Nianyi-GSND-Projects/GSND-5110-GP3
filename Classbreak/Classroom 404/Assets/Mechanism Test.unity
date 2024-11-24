@@ -2188,15 +2188,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAnimation: {fileID: 1891706984}
-  defaultLevelTime: 10
+  settings: {fileID: 11400000, guid: c14327d5202ce9e4a8dfbaeec0d1d48a, type: 2}
+  defaultLevelTime: 60
   warningTime: 10
   levels:
-  - {fileID: 1870216325}
-  - {fileID: 1375129595}
   - {fileID: 849215223}
   - {fileID: 103655441}
   - {fileID: 875524219}
+  - {fileID: 1375129595}
   - {fileID: 1446959135}
+  - {fileID: 1870216325}
   - {fileID: 1644964276}
   - {fileID: 955689028}
   status: {fileID: 344161209}
