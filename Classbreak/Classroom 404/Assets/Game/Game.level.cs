@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 
 namespace Game
 {
@@ -15,7 +16,9 @@ namespace Game
 		#region Fields
 		private int? currentLevelIndex = null;
 		private int? lastPassedLevelIndex = null;
+
 		private Coroutine levelRunningCoroutine = null;
+		private Coroutine passLevelCoroutine = null;
 		#endregion
 
 		#region Properties
@@ -98,24 +101,33 @@ namespace Game
 			Debug.Log($"Level \"{CurrentLevel.name}\" started.");
 		}
 
-		private void EndCurrentLevel()
+		private void EndCurrentLevel(bool revert = false)
 		{
 			if(CurrentLevel == null)
 				return;
 
-			StopRunningLevel();
+			// Stop current level.
+			if(levelRunningCoroutine != null)
+			{
+				StopCoroutine(levelRunningCoroutine);
+				levelRunningCoroutine = null;
+			}
+			status.Visible = false;
 
 			string levelName = CurrentLevel.name;
 
-			CurrentLevel.SendMessage("OnEnd");
+			CurrentLevel.SendMessage(!revert ? "OnEnd" : "OnRevert");
 			CurrentLevel.gameObject.SetActive(false);
 			currentLevelIndex = null;
 
-			Debug.Log($"Level \"{levelName}\" ended.");
+			Debug.Log($"Level \"{levelName}\" {(!revert ? "ended" : "reverted")}.");
 		}
 
 		private void StartNextLevel()
 		{
+			if(passLevelCoroutine != null)
+				return;
+
 			int index = 0;
 			if(lastPassedLevelIndex != null)
 				index = lastPassedLevelIndex.Value + 1;
@@ -126,6 +138,91 @@ namespace Game
 			}
 
 			StartLevel(index);
+		}
+
+		private void PassCurrentLevel()
+		{
+			if(passLevelCoroutine != null)
+				return;
+
+			passLevelCoroutine = StartCoroutine(PassCurrentLevelCoroutine());
+		}
+
+		private IEnumerator PassCurrentLevelCoroutine()
+		{
+			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
+			lastPassedLevelIndex = currentLevelIndex;
+
+			if(lastPassedLevelIndex + 1 == levels.Length)
+			{
+				StartCoroutine(FinishGameCoroutine());
+				yield break;
+			}
+
+			// Light up the previous level's destination classroom.
+			SetLastPassedLevelLight(true);
+
+			EndCurrentLevel();
+
+			yield return new WaitForSeconds(1.0f);
+
+			// Turn off the lights in the just-passed level's destination classroom.
+			SetLastPassedLevelLight(false);
+
+			passLevelCoroutine = null;
+		}
+
+		private IEnumerator LevelRunningCoroutine(Level level)
+		{
+			float levelTime = defaultLevelTime;
+
+			// Show the mobile notification.
+			ShowMobile();
+
+			// Wait for a few seconds.
+			yield return new WaitForSeconds(3.0f);
+
+			// Show the status UI.
+			status.RemainingTime = levelTime;
+			status.Warning = false;
+			status.Visible = true;
+
+			// Update the status UI.
+			for(float startTime = Time.time, elasped; (elasped = Time.time - startTime) < levelTime;)
+			{
+				float remaining = levelTime - elasped;
+				status.RemainingTime = remaining;
+				if(remaining <= warningTime)
+				{
+					status.Warning = true;
+				}
+				yield return new WaitForEndOfFrame();
+			}
+
+			// Time's out.
+			status.RemainingTime = 0.0f;
+			StartCoroutine(TimeOutCoroutine());
+		}
+
+		private IEnumerator TimeOutCoroutine()
+		{
+			Debug.Log("Time's up for this cycle, restarting the current level.");
+
+			int index = currentLevelIndex.Value;
+			EndCurrentLevel(true);
+
+			yield return new WaitForSeconds(1.0f);
+
+			ResetPlayerPosition(index);
+			RevertScene();
+
+			SetLastPassedLevelLight(false);
+		}
+
+		private void SetLastPassedLevelLight(bool on)
+		{
+			if(LastPassedLevel != null)
+				LastPassedLevel.Destination.LightsOn = on;
 		}
 		#endregion
 	}

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game
 {
@@ -24,7 +25,7 @@ namespace Game
 				return transform;
 			}
 		}
-		public IEnumerable<Text> DoorPlates => doorPlates;
+		public IEnumerable<Text> DoorPlates => doorPlates.Concat(exitBoards);
 		#endregion
 
 		#region Life cycle
@@ -55,9 +56,12 @@ namespace Game
 		#endregion
 
 		#region Interfaces
-		public void SetDoorPlateNumber(string number) {
-			foreach(var doorplate in doorPlates)
-				doorplate.text = number;
+		public void SetDoorPlateNumber(string number)
+		{
+			foreach(var plate in doorPlates)
+				plate.text = number;
+			foreach(var board in exitBoards)
+				board.text = number;
 			if(mapLabel != null)
 				mapLabel.text = number;
 		}
@@ -67,8 +71,24 @@ namespace Game
 			SetDoorPlateNumber(number);
 		}
 
-		public void Revert() {
+		public void Revert()
+		{
 			RevertDoorPlateNumber();
+			LightsOn = true;
+		}
+
+		public bool LightsOn
+		{
+			set
+			{
+				if(!TryGetComponent<LightGroup>(out var g))
+					return;
+
+				if(value)
+					g.TurnOn();
+				else
+					g.TurnOff();
+			}
 		}
 		#endregion
 	}

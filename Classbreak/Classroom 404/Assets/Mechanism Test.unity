@@ -252,6 +252,10 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls: []
+  overrideReverting: 0
+  onReverting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &118938661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,15 +2188,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAnimation: {fileID: 1891706984}
-  defaultLevelTime: 60
+  defaultLevelTime: 10
   warningTime: 10
   levels:
+  - {fileID: 1870216325}
+  - {fileID: 1375129595}
   - {fileID: 849215223}
   - {fileID: 103655441}
   - {fileID: 875524219}
-  - {fileID: 1375129595}
   - {fileID: 1446959135}
-  - {fileID: 1870216325}
   - {fileID: 1644964276}
   - {fileID: 955689028}
   status: {fileID: 344161209}
@@ -3763,6 +3767,10 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls: []
+  overrideReverting: 0
+  onReverting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &864056004
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,6 +4033,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  overrideReverting: 0
+  onReverting:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &899908252
@@ -4343,6 +4355,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  overrideReverting: 0
+  onReverting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &989208733
 GameObject:
   m_ObjectHideFlags: 0
@@ -6002,6 +6018,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1375129594}
   - component: {fileID: 1375129595}
+  - component: {fileID: 1375129597}
+  - component: {fileID: 1375129596}
   m_Layer: 0
   m_Name: 'L04: Hidden Passageway'
   m_TagString: Untagged
@@ -6069,6 +6087,49 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1375129597}
+        m_TargetAssemblyTypeName: NaniCore.DelayedLogic, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  overrideReverting: 1
+  onReverting:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1375129596}
+        m_TargetAssemblyTypeName: NaniCore.Logic, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1375129596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375129593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b16aa584a7908c4d8df8d00ab279e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callback:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 951256433}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -6093,6 +6154,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1375129597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375129593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b6f7a58290b7a46a87a43915a05b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1375129596}
+        m_TargetAssemblyTypeName: NaniCore.Logic, Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayTime: 1
 --- !u!1 &1382327367
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,6 +6419,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  overrideReverting: 0
+  onReverting:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1446959136
@@ -6974,6 +7067,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  overrideReverting: 0
+  onReverting:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1738837871
@@ -7647,6 +7744,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  overrideReverting: 0
+  onReverting:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1885528262
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ namespace Game
 			if(CurrentLevel != null)
 			{
 				if(classroom == CurrentLevel.Destination)
-					StartCoroutine(PassLevelCoroutine());
+					PassCurrentLevel();
 			}
 		}
 
@@ -62,83 +62,13 @@ namespace Game
 			StartNextLevel();
 		}
 
-		private IEnumerator LevelRunningCoroutine(Level level)
-		{
-			float levelTime = defaultLevelTime;
-
-			// Show the mobile notification.
-			ShowMobile();
-
-			// Wait for a few seconds.
-			yield return new WaitForSeconds(3.0f);
-
-			// Show the status UI.
-			status.RemainingTime = levelTime;
-			status.Warning = false;
-			status.Visible = true;
-
-			// Update the status UI.
-			for(float startTime = Time.time, elasped; (elasped = Time.time - startTime) < levelTime;)
-			{
-				float remaining = levelTime - elasped;
-				status.RemainingTime = remaining;
-				if(remaining <= warningTime)
-				{
-					status.Warning = true;
-				}
-				yield return new WaitForEndOfFrame();
-			}
-
-			// Time's out.
-			status.RemainingTime = 0.0f;
-			StartCoroutine(TimeOutCoroutine());
-		}
-
-		private void StopRunningLevel()
-		{
-			if(levelRunningCoroutine != null)
-			{
-				StopCoroutine(levelRunningCoroutine);
-				levelRunningCoroutine = null;
-			}
-			status.Visible = false;
-		}
-
-		private IEnumerator PassLevelCoroutine()
-		{
-			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
-			lastPassedLevelIndex = currentLevelIndex;
-			StopRunningLevel();
-
-			if(lastPassedLevelIndex + 1 == levels.Length)
-			{
-				StartCoroutine(FinishGameCoroutine());
-				yield break;
-			}
-
-			// TODO: Only the "OnEnd" event of the level should be delayed.
-			// Or find a way to deal with the leve-altering level designs.
-			yield return new WaitForSeconds(1.0f);
-			EndCurrentLevel();
-		}
-
-		private IEnumerator TimeOutCoroutine()
-		{
-			Debug.Log("Time's up for this cycle, restarting the current level.");
-
-			int index = currentLevelIndex.Value;
-			EndCurrentLevel();
-
-			yield return new WaitForSeconds(1.0f);
-
-			ResetPlayerPosition(index);
-			RevertScene();
-		}
-
 		private IEnumerator FinishGameCoroutine()
 		{
+			EndCurrentLevel();
+
 			Debug.Log($"All levels are passed. Game finished.");
 			yield break;
+
 			// TODO
 		}
 		#endregion
