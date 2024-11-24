@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1062541595731935847}
   - component: {fileID: 3480381813866938876}
   m_Layer: 0
-  m_Name: Number Text
+  m_Name: Door Plate Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 150
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 150
@@ -88,7 +88,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4194480599374769677}
-  - component: {fileID: 574825088802529568}
   m_Layer: 0
   m_Name: Door Plate
   m_TagString: Untagged
@@ -113,19 +112,6 @@ Transform:
   - {fileID: 8437996719861522707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &574825088802529568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379944320466824896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b185ad8a33b623741a49dc794aa4967a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 3480381813866938876}
 --- !u!1 &5620563105457214030
 GameObject:
   m_ObjectHideFlags: 0
