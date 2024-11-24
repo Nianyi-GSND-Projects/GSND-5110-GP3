@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
 	public class DoorPlate : MonoBehaviour
 	{
-		[SerializeField] private TMPro.TMP_Text text;
+		[SerializeField] private Text text;
 
 		public string Number {
 			get => text.text;
