@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Game Settings
   m_EditorClassIdentifier: 
   levelTime: 60
+  classStartTime: 36000
   warningTime: 10
   notificationTime: 3
   waitAfterPassing: 2
@@ -25,3 +26,39 @@ MonoBehaviour:
   classDismissBell:
     clip: {fileID: 8300000, guid: c546590e023cbdc4d8e2820f5dde3d94, type: 3}
     volume: 0.2
+  clockTick:
+    clip: {fileID: 8300000, guid: 9e8cee0c944d3424c97dab01a7b69918, type: 3}
+    volume: 1
+  clockTickGainCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0020684148
+      value: 0.056939535
+      inSlope: 0.024078222
+      outSlope: 0.024078222
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.545743
+    - serializedVersion: 3
+      time: 0.6792562
+      value: 0.55784893
+      inSlope: 2.1275446
+      outSlope: 2.1275446
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14821725
+      outWeight: 0.2039297
+    - serializedVersion: 3
+      time: 1.000776
+      value: 0.99644053
+      inSlope: -0
+      outSlope: -0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

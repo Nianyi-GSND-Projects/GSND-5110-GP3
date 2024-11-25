@@ -12,11 +12,11 @@ namespace Game
 
 	public partial class Game
 	{
-		public void PlaySoundEffect(SoundEffect sfx)
+		public void PlaySoundEffect(SoundEffect sfx, float gain = 1.0f)
 		{
 			Protagonist.PlaySfxOneShot(sfx.clip, new AudioUtility.AudioPlayConfig()
 			{
-				volume = sfx.volume,
+				volume = sfx.volume * gain,
 				spatialBlend = 0.0f,
 				range = new(1.0f, 5.0f),
 			});

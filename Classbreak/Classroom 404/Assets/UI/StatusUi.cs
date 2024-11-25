@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +15,22 @@ namespace Game
 		[SerializeField] private Text timer;
 		#endregion
 
-		#region Fiedlds
+		#region Fields
 		private float startAppearingTime = 0, startGameTime = 0;
+		private Coroutine tickCoroutine;
 		#endregion
 
 		#region Life cycle
-		protected void Update()
-		{
-			Timer = startAppearingTime + Time.time - startGameTime;
+		private IEnumerator TickCoroutine() {
+			yield return new WaitForSeconds(startAppearingTime - Mathf.Floor(startAppearingTime));
+			while(true)
+			{
+				float t = Time.time - startGameTime;
+				Timer = startAppearingTime + t;
+				float gain = Game.Instance.Settings.clockTickGainCurve.Evaluate(t / Game.Instance.Settings.levelTime);
+				Game.Instance.PlaySoundEffect(Game.Instance.Settings.clockTick, gain);
+				yield return new WaitForSeconds(1.0f);
+			}
 		}
 		#endregion
 
@@ -31,7 +40,22 @@ namespace Game
 			get => carrier.IsOpened;
 			set
 			{
-				carrier.IsOpened = value;
+				if(value)
+				{
+					carrier.IsOpened = true;
+					if(tickCoroutine != null)
+					{
+						StopCoroutine(tickCoroutine);
+						tickCoroutine = null;
+					}
+					tickCoroutine = StartCoroutine(TickCoroutine());
+				}
+				else
+				{
+					carrier.IsOpened = false;
+					StopCoroutine(tickCoroutine);
+					tickCoroutine = null;
+				}
 			}
 		}
 

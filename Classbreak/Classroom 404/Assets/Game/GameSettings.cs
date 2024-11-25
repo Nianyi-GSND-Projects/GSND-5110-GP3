@@ -26,5 +26,7 @@ namespace Game
 		[Header("Audio")]
 		public SoundEffect mobileNotification;
 		public SoundEffect classDismissBell;
+		public SoundEffect clockTick;
+		public AnimationCurve clockTickGainCurve;
 	}
 }
