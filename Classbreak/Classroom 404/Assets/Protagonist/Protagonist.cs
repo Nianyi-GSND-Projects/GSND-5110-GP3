@@ -18,6 +18,7 @@ namespace Game
 		protected void Start()
 		{
 			StartControl();
+			EyelidOpenness = 1.0f;
 		}
 
 		protected void Update()

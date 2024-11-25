@@ -195,15 +195,29 @@ namespace Game
 		{
 			Debug.Log("Time's up for this cycle, restarting the current level.");
 
+			// End the current level.
+			Protagonist.ControlEnabled = false;
 			int index = currentLevelIndex.Value;
 			EndCurrentLevel(true);
 
 			yield return new WaitForSeconds(Settings.timeOutDelay);
 
+			// Play the dying animation.
+			Protagonist.SetEyelidOpenness(0.0f);
+			yield return new WaitForSeconds(1.0f / Protagonist.eyelidSpeed);
+
+			// Revert the scene.
 			ResetPlayerPosition(index);
 			RevertScene();
 
 			yield return new WaitForSeconds(Settings.delayAfterRespawn);
+
+			// Play the respawning animation.
+			Protagonist.SetEyelidOpenness(1.0f);
+			yield return new WaitForSeconds(1.0f / Protagonist.eyelidSpeed);
+
+			// Restore play mode.
+			Protagonist.ControlEnabled = true;
 			PlaySoundEffect(Settings.classDismissBell);
 			SetLastPassedLevelLight(false);
 			StartCoroutine(WaitForNextLevelToStartCoroutine());

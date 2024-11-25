@@ -9,9 +9,9 @@ namespace Game
 		[Header("UI")]
 		[SerializeField] private Graphic focus;
 		[SerializeField] private Graphic eyelids;
-		[SerializeField][Min(0)] private float eyelidSpeed = 1.0f;
+		[Min(0)] public float eyelidSpeed = 1.0f;
 
-		public float EyelidOpenness
+		private float EyelidOpenness
 		{
 			get => eyelids.material.GetFloat("_Openness");
 			set

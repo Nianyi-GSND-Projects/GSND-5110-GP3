@@ -71,6 +71,7 @@ namespace Game
 		#region Life cycle
 		private IEnumerator GameStartCoroutine()
 		{
+			yield return new WaitForEndOfFrame();
 			RevertScene();
 			PlaySoundEffect(Settings.classDismissBell);
 #if DEBUG
