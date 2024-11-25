@@ -53,7 +53,7 @@ namespace Game
 		private void LevelStart()
 		{
 			levels = levels.Where(x => x != null).ToArray();
-			foreach(var level in levels)
+			foreach(var level in FindObjectsOfType<Level>())
 			{
 				level.gameObject.SetActive(false);
 			}

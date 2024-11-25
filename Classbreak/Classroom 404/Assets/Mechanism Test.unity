@@ -1017,6 +1017,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 698284346021724830, guid: 115ec8414f16c6441bc3fff7a9c0ef0d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5442036397428615951, guid: 115ec8414f16c6441bc3fff7a9c0ef0d, type: 3}
       propertyPath: m_Name
       value: Protagonist
@@ -2077,7 +2081,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 955689027}
+    m_TransformParent: {fileID: 655643005}
     m_Modifications:
     - target: {fileID: 2770626266892423737, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2089,15 +2093,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7426291440739036782, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7426291440739036782, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7426291440739036782, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7426291440739036782, guid: f3b7d0601ddf2c7469f6c16e8fdca238, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3058,7 +3062,8 @@ Transform:
   m_LocalPosition: {x: -20, y: 1.5, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 582064269}
   m_Father: {fileID: 955689027}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &655643006
@@ -4317,7 +4322,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 582064269}
   - {fileID: 655643005}
   m_Father: {fileID: 1859362629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4352,7 +4356,19 @@ MonoBehaviour:
         m_CallState: 2
   onEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 655643005}
+        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
+        m_MethodName: SetParent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 540466407}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   overrideReverting: 1
   onReverting:
     m_PersistentCalls:
