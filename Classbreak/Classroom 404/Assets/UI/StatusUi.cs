@@ -21,7 +21,8 @@ namespace Game
 		#endregion
 
 		#region Life cycle
-		private IEnumerator TickCoroutine() {
+		private IEnumerator TickCoroutine()
+		{
 			yield return new WaitForSeconds(startAppearingTime - Mathf.Floor(startAppearingTime));
 			while(true)
 			{
@@ -53,8 +54,11 @@ namespace Game
 				else
 				{
 					carrier.IsOpened = false;
-					StopCoroutine(tickCoroutine);
-					tickCoroutine = null;
+					if(tickCoroutine != null)
+					{
+						StopCoroutine(tickCoroutine);
+						tickCoroutine = null;
+					}
 				}
 			}
 		}

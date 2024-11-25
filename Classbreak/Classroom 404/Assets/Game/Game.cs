@@ -21,6 +21,7 @@ namespace Game
 		#region Fields
 		private Protagonist protagonist;
 		private readonly HashSet<Classroom> currentlyOverlappingClassrooms = new();
+		private System.Action onPlayerExitClassroom;
 		#endregion
 
 		#region Properties
@@ -65,6 +66,7 @@ namespace Game
 		protected void OnPlayerExitClassroom(Classroom classroom)
 		{
 			currentlyOverlappingClassrooms.Remove(classroom);
+			onPlayerExitClassroom?.Invoke();
 		}
 		#endregion
 
@@ -74,10 +76,14 @@ namespace Game
 			yield return new WaitForEndOfFrame();
 			RevertScene();
 			PlaySoundEffect(Settings.classDismissBell);
+			MovementGuidanceVisible = false;
+
 #if DEBUG
 			if(!skipStartingAnimation)
 #endif
 				yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
+
+			MovementGuidanceVisible = true;
 			StartCoroutine(WaitForNextLevelToStartCoroutine());
 		}
 
