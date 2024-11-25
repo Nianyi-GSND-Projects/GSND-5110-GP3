@@ -28,25 +28,29 @@ namespace Game
 		}
 		#endregion
 
-		#region Interface
-		public bool EnableControl
-		{
-			get
-			{
-				if(!input)
-					return false;
-				return input.enabled;
-			}
-			set
-			{
-				if(!input && value)
-				{
-					Debug.LogWarning("Cannot enable input due to missing ProtagonistInput component.");
-					return;
-				}
-				input.enabled = value;
+		#region Properties
+		private ProtagonistInput Input {
+			get {
+				if(input == null)
+					input = GetComponent<ProtagonistInput>();
+				return input;
 			}
 		}
+		#endregion
+
+		#region Interface
+		public bool ControlEnabled
+		{
+			get => Input.enabled;
+			set
+			{
+				Input.enabled = value;
+				focus.enabled = value;
+			}
+		}
+
+		public void EnableControl() => ControlEnabled = true;
+		public void DisableControl() => ControlEnabled = false;
 
 		public void AlignTo(Transform target) {
 			controller.enabled = false;

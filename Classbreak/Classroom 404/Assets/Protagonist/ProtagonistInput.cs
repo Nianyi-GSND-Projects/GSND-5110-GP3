@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Game
 {
@@ -41,11 +42,13 @@ namespace Game
 
 		protected void OnEnable()
 		{
+			PlayerInput.enabled = true;
 			Cursor.lockState = CursorLockMode.Locked;
 		}
 
 		protected void OnDisable()
 		{
+			PlayerInput.enabled = false;
 			Cursor.lockState = CursorLockMode.None;
 		}
 		#endregion
@@ -64,21 +67,6 @@ namespace Game
 			else
 				map.Disable();
 		}
-		#endregion
-
-		#region Interfaces
-		public bool IsInputEnabled
-		{
-			set
-			{
-				enabled = value;
-				PlayerInput.enabled = value;
-			}
-		}
-
-		public void EnableInput() => IsInputEnabled = true;
-
-		public void DisableInput() => IsInputEnabled = false;
 		#endregion
 
 		#region Movement

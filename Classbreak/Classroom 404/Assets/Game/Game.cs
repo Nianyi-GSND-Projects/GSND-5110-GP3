@@ -7,11 +7,20 @@ namespace Game
 {
 	public partial class Game : MonoBehaviour
 	{
-		#region Fields
-		private Protagonist protagonist;
+		#region Serialized fields
+		[Header("General")]
 		[NaughtyAttributes.Expandable]
 		[SerializeField] private GameSettings settings;
-		private HashSet<Classroom> currentlyOverlappingClassrooms = new();
+
+#if DEBUG
+		[Header("Debug")]
+		[SerializeField] private bool skipStartingAnimation;
+#endif
+		#endregion
+
+		#region Fields
+		private Protagonist protagonist;
+		private readonly HashSet<Classroom> currentlyOverlappingClassrooms = new();
 		#endregion
 
 		#region Properties
@@ -64,7 +73,10 @@ namespace Game
 		{
 			RevertScene();
 			PlaySoundEffect(Settings.classDismissBell);
-			yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
+#if DEBUG
+			if(!skipStartingAnimation)
+#endif
+				yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
 			StartCoroutine(WaitForNextLevelToStartCoroutine());
 		}
 

@@ -7,7 +7,8 @@ namespace Game
 	public partial class Protagonist
 	{
 		[Header("UI")]
-		[SerializeField] private RawImage eyelids;
+		[SerializeField] private Graphic focus;
+		[SerializeField] private Graphic eyelids;
 		[SerializeField][Min(0)] private float eyelidSpeed = 1.0f;
 
 		public float EyelidOpenness {
