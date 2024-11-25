@@ -11,10 +11,9 @@ namespace Game
 		[SerializeField] private Graphic eyelids;
 		[SerializeField][Min(0)] private float eyelidSpeed = 1.0f;
 
-		public float EyelidOpenness {
-			get {
-				return eyelids.material.GetFloat("_Openness");
-			}
+		public float EyelidOpenness
+		{
+			get => eyelids.material.GetFloat("_Openness");
 			set
 			{
 				value = Mathf.Clamp01(value);
@@ -23,7 +22,8 @@ namespace Game
 			}
 		}
 
-		public void SetEyelidOpenness(float targetOpenness) {
+		public void SetEyelidOpenness(float targetOpenness)
+		{
 			if(setEyelidOpennessCoroutine != null)
 			{
 				StopCoroutine(setEyelidOpennessCoroutine);

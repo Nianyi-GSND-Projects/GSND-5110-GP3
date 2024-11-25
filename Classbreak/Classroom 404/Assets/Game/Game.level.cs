@@ -183,24 +183,11 @@ namespace Game
 			yield return new WaitForSeconds(Settings.notificationTime);
 
 			// Show the status UI.
-			status.RemainingTime = levelTime;
-			status.Warning = false;
+			status.CurrentTime = Settings.classStartTime - Settings.levelTime;
 			status.Visible = true;
 
-			// Update the status UI.
-			for(float startTime = Time.time, elasped; (elasped = Time.time - startTime) < levelTime;)
-			{
-				float remaining = levelTime - elasped;
-				status.RemainingTime = remaining;
-				if(remaining <= Settings.warningTime)
-				{
-					status.Warning = true;
-				}
-				yield return new WaitForEndOfFrame();
-			}
+			yield return new WaitForSeconds(Settings.levelTime);
 
-			// Time's out.
-			status.RemainingTime = 0.0f;
 			StartCoroutine(TimeOutCoroutine());
 		}
 

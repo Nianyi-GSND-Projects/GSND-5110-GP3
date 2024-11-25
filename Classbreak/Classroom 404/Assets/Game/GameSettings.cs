@@ -8,6 +8,8 @@ namespace Game
 		[Header("Level")]
 		[Tooltip("How long a level lasts.")]
 		[Min(0)] public float levelTime = 60.0f;
+		[Tooltip("The appearing starting time of the course, in seconds.")]
+		[Min(0)] public float classStartTime = 10 * 60 * 60;
 		[Tooltip("When the timer becomes red.")]
 		[Min(0)] public float warningTime = 10.0f;
 		[Tooltip("How soon will the timer start after showing the phone notification.")]

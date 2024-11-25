@@ -105,19 +105,6 @@ namespace Game
 			foreach(var classroom in FindObjectsOfType<Classroom>())
 				classroom.RevertDoorPlateNumber();
 		}
-
-		private void ShowMobile(float duration = 5.0f)
-		{
-			StartCoroutine(ShowMobileCoroutine(duration));
-		}
-
-		private IEnumerator ShowMobileCoroutine(float duration = 5.0f)
-		{
-			mobile.Visible = true;
-			PlaySoundEffect(Settings.mobileNotification);
-			yield return new WaitForSeconds(duration);
-			mobile.Visible = false;
-		}
 		#endregion
 	}
 }
