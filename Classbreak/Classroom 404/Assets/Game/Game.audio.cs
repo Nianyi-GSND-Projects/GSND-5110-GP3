@@ -1,15 +1,25 @@
 using UnityEngine;
+using NaniCore;
 
 namespace Game
 {
+	[System.Serializable]
+	public struct SoundEffect
+	{
+		public AudioClip clip;
+		public float volume;
+	}
+
 	public partial class Game
 	{
-		[Header("Audio")]
-		[SerializeField] private AudioSource mobileNotificationSound;
-
-		public void PlayMobileNotificationSound() {
-			mobileNotificationSound.time = 0.0f;
-			mobileNotificationSound.Play();
+		public void PlaySoundEffect(SoundEffect sfx)
+		{
+			Protagonist.PlaySfxOneShot(sfx.clip, new AudioUtility.AudioPlayConfig()
+			{
+				volume = sfx.volume,
+				spatialBlend = 0.0f,
+				range = new(1.0f, 5.0f),
+			});
 		}
 	}
 }

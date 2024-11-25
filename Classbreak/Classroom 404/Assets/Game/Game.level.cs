@@ -7,9 +7,6 @@ namespace Game
 	public partial class Game
 	{
 		#region Serialized fields
-		[Header("Level")]
-		[SerializeField][Min(0)] private float defaultLevelTime = 60.0f;
-		[SerializeField][Min(0)] private float warningTime = 10.0f;
 		[SerializeField] private Level[] levels;
 		#endregion
 
@@ -153,14 +150,17 @@ namespace Game
 			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
 			lastPassedLevelIndex = currentLevelIndex;
 
+			PlaySoundEffect(Settings.classDismissBell);
+
 			if(lastPassedLevelIndex + 1 == levels.Length)
 			{
 				StartCoroutine(FinishGameCoroutine());
 				yield break;
 			}
 
-			// Light up the previous level's destination classroom.
-			SetLastPassedLevelLight(true);
+			// Light up all classrooms.
+			foreach(var room in FindObjectsOfType<Classroom>())
+				room.LightsOn = true;
 
 			EndCurrentLevel();
 
@@ -174,7 +174,7 @@ namespace Game
 
 		private IEnumerator LevelRunningCoroutine()
 		{
-			float levelTime = defaultLevelTime;
+			float levelTime = Settings.levelTime;
 
 			// Show the mobile notification for a few seconds.
 			ShowMobile();
@@ -190,7 +190,7 @@ namespace Game
 			{
 				float remaining = levelTime - elasped;
 				status.RemainingTime = remaining;
-				if(remaining <= warningTime)
+				if(remaining <= Settings.warningTime)
 				{
 					status.Warning = true;
 				}
@@ -213,7 +213,6 @@ namespace Game
 
 			ResetPlayerPosition(index);
 			RevertScene();
-
 			SetLastPassedLevelLight(false);
 		}
 
