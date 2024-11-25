@@ -96,7 +96,7 @@ namespace Game
 			CurrentLevel.gameObject.SetActive(true);
 			CurrentLevel.SendMessage("OnStart");
 
-			levelRunningCoroutine = StartCoroutine(LevelRunningCoroutine(CurrentLevel));
+			levelRunningCoroutine = StartCoroutine(LevelRunningCoroutine());
 
 			Debug.Log($"Level \"{CurrentLevel.name}\" started.");
 		}
@@ -172,7 +172,7 @@ namespace Game
 			passLevelCoroutine = null;
 		}
 
-		private IEnumerator LevelRunningCoroutine(Level level)
+		private IEnumerator LevelRunningCoroutine()
 		{
 			float levelTime = defaultLevelTime;
 

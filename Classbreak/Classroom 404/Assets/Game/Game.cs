@@ -8,6 +8,7 @@ namespace Game
 	{
 		#region Fields
 		private Protagonist protagonist;
+		[Header("General")]
 		[SerializeField] private GameSettings settings;
 		#endregion
 
@@ -98,6 +99,7 @@ namespace Game
 		private IEnumerator ShowMobileCoroutine(float duration = 5.0f)
 		{
 			mobile.Visible = true;
+			PlayMobileNotificationSound();
 			yield return new WaitForSeconds(duration);
 			mobile.Visible = false;
 		}
