@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Game
@@ -10,11 +11,13 @@ namespace Game
 		private Protagonist protagonist;
 		[NaughtyAttributes.Expandable]
 		[SerializeField] private GameSettings settings;
+		private HashSet<Classroom> currentlyOverlappingClassrooms = new();
 		#endregion
 
 		#region Properties
 		public Protagonist Protagonist => protagonist;
 		public GameSettings Settings => settings;
+		private bool IsInAnyClassroom => currentlyOverlappingClassrooms.Count > 0;
 		#endregion
 
 		#region Unity events
@@ -41,6 +44,8 @@ namespace Game
 		#region Message handlers
 		protected void OnPlayerEnterClassroom(Classroom classroom)
 		{
+			currentlyOverlappingClassrooms.Add(classroom);
+
 			if(CurrentLevel != null)
 			{
 				if(classroom == CurrentLevel.Destination)
@@ -50,10 +55,7 @@ namespace Game
 
 		protected void OnPlayerExitClassroom(Classroom classroom)
 		{
-			if(CurrentLevel == null)
-			{
-				StartNextLevel();
-			}
+			currentlyOverlappingClassrooms.Remove(classroom);
 		}
 		#endregion
 
@@ -61,8 +63,9 @@ namespace Game
 		private IEnumerator GameStartCoroutine()
 		{
 			RevertScene();
+			PlaySoundEffect(Settings.classDismissBell);
 			yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
-			StartNextLevel();
+			StartCoroutine(WaitForNextLevelToStartCoroutine());
 		}
 
 		private IEnumerator FinishGameCoroutine()

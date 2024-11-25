@@ -17,6 +17,8 @@ MonoBehaviour:
   notificationTime: 3
   waitAfterPassing: 2
   timeOutDelay: 1
+  maxWaitTime: 10
+  delayAfterRespawn: 2
   mobileNotification:
     clip: {fileID: 8300000, guid: 96f9292d4a3788b4c9d43a111ce00fb4, type: 3}
     volume: 0.5

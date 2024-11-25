@@ -170,6 +170,8 @@ namespace Game
 			SetLastPassedLevelLight(false);
 
 			passLevelCoroutine = null;
+
+			StartCoroutine(WaitForNextLevelToStartCoroutine());
 		}
 
 		private IEnumerator LevelRunningCoroutine()
@@ -213,7 +215,17 @@ namespace Game
 
 			ResetPlayerPosition(index);
 			RevertScene();
+
+			yield return new WaitForSeconds(Settings.delayAfterRespawn);
+			PlaySoundEffect(Settings.classDismissBell);
 			SetLastPassedLevelLight(false);
+			StartCoroutine(WaitForNextLevelToStartCoroutine());
+		}
+
+		private IEnumerator WaitForNextLevelToStartCoroutine() {
+			float startTime = Time.time;
+			yield return new WaitUntil(() => !IsInAnyClassroom || Time.time - startTime >= Settings.maxWaitTime);
+			StartNextLevel();
 		}
 
 		private void SetLastPassedLevelLight(bool on)
