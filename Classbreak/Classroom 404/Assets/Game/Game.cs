@@ -124,6 +124,7 @@ namespace Game
 
 			yield return new WaitForSeconds(2.0f);
 
+			Protagonist.ControlEnabled = false;
 			Cursor.lockState = CursorLockMode.None;
 			endUi.gameObject.SetActive(true);
 			Time.timeScale = 0.0f;
