@@ -2416,7 +2416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startAnimation: {fileID: 1891706984}
   settings: {fileID: 11400000, guid: c14327d5202ce9e4a8dfbaeec0d1d48a, type: 2}
-  skipStartingAnimation: 0
+  skipStartingAnimation: 1
   levels:
   - {fileID: 849215223}
   - {fileID: 103655441}
@@ -8402,7 +8402,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0f5d01fd5ff763e45b86e3144ebd4797, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0

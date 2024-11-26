@@ -12,10 +12,8 @@ namespace Game
 		[NaughtyAttributes.Expandable]
 		[SerializeField] private GameSettings settings;
 
-#if DEBUG
 		[Header("Debug")]
 		[SerializeField] private bool skipStartingAnimation;
-#endif
 		#endregion
 
 		#region Fields
@@ -75,13 +73,27 @@ namespace Game
 		{
 			yield return new WaitForEndOfFrame();
 			RevertScene();
-			PlaySoundEffect(Settings.classDismissBell);
 			MovementGuidanceVisible = false;
 
-#if DEBUG
-			if(!skipStartingAnimation)
-#endif
-				yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
+
+			if(Application.isEditor)
+			{
+				if(!skipStartingAnimation)
+				{
+					startAnimation.Play();
+					yield return new WaitForEndOfFrame();
+					startAnimation.Pause();
+				}
+			}
+
+			yield return new WaitForSeconds(1.0f);
+			PlaySoundEffect(Settings.classDismissBell);
+
+			if(Application.isEditor)
+			{
+				if(!skipStartingAnimation)
+					yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
+			}
 
 			MovementGuidanceVisible = true;
 			StartCoroutine(WaitForNextLevelToStartCoroutine());
@@ -89,8 +101,6 @@ namespace Game
 
 		private IEnumerator FinishGameCoroutine()
 		{
-			EndCurrentLevel();
-
 			Debug.Log($"All levels are passed. Game finished.");
 			yield break;
 

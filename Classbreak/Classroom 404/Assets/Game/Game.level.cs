@@ -150,19 +150,19 @@ namespace Game
 			Debug.Log($"Level \"{CurrentLevel.name}\" passed.");
 			lastPassedLevelIndex = currentLevelIndex;
 
-			PlaySoundEffect(Settings.classDismissBell);
-
+			EndCurrentLevel();
 			if(lastPassedLevelIndex + 1 == levels.Length)
 			{
 				StartCoroutine(FinishGameCoroutine());
 				yield break;
 			}
 
+			yield return new WaitForSeconds(Settings.waitBeforePassing);
+
+			PlaySoundEffect(Settings.classDismissBell);
 			// Light up all classrooms.
 			foreach(var room in FindObjectsOfType<Classroom>())
 				room.LightsOn = true;
-
-			EndCurrentLevel();
 
 			yield return new WaitForSeconds(Settings.waitAfterPassing);
 
@@ -170,7 +170,6 @@ namespace Game
 			SetLastPassedLevelLight(false);
 
 			passLevelCoroutine = null;
-
 			StartCoroutine(WaitForNextLevelToStartCoroutine());
 		}
 
@@ -204,7 +203,7 @@ namespace Game
 
 			// Play the dying animation.
 			Protagonist.SetEyelidOpenness(0.0f);
-			yield return new WaitForSeconds(1.0f / Protagonist.eyelidSpeed);
+			yield return StartCoroutine(PlaySoundEffectCoroutine(Settings.levelFail));
 
 			// Revert the scene.
 			ResetPlayerPosition(index);
