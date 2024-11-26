@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using System;
+using System.Diagnostics.Tracing;
 
 namespace Game
 {
@@ -196,30 +198,22 @@ namespace Game
 
 			// End the current level.
 			Protagonist.ControlEnabled = false;
-			int index = currentLevelIndex.Value;
 			EndCurrentLevel(true);
 
-			yield return new WaitForSeconds(Settings.timeOutDelay);
-
-			// Play the dying animation.
-			Protagonist.SetEyelidOpenness(0.0f);
-			yield return StartCoroutine(PlaySoundEffectCoroutine(Settings.levelFail));
-
-			// Revert the scene.
-			ResetPlayerPosition(index);
-			RevertScene();
-
-			yield return new WaitForSeconds(Settings.delayAfterRespawn);
-
-			// Play the respawning animation.
-			Protagonist.SetEyelidOpenness(1.0f);
-			yield return new WaitForSeconds(1.0f / Protagonist.eyelidSpeed);
+			yield return new AnimationUtiliity.WaitTillAnimationEnds(failAnimation);
 
 			// Restore play mode.
 			Protagonist.ControlEnabled = true;
 			PlaySoundEffect(Settings.classDismissBell);
 			SetLastPassedLevelLight(false);
 			StartCoroutine(WaitForNextLevelToStartCoroutine());
+		}
+
+		protected void RevertLevel()
+		{
+			int index = LastPassedLevel == null ? 0 : lastPassedLevelIndex.Value + 1;
+			ResetPlayerPosition(index);
+			RevertScene();
 		}
 
 		private IEnumerator WaitForNextLevelToStartCoroutine() {

@@ -75,7 +75,6 @@ namespace Game
 			RevertScene();
 			MovementGuidanceVisible = false;
 
-
 			if(Application.isEditor)
 			{
 				if(!skipStartingAnimation)
