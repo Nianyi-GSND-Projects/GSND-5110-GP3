@@ -13,7 +13,7 @@ namespace Game
 		[SerializeField] private Graphic depthFog;
 		[Min(0)] public float depthFogSpeed = 1.0f;
 
-		private float EyelidOpenness
+		public float EyelidOpenness
 		{
 			get => eyelids.material.GetFloat("_Openness");
 			set

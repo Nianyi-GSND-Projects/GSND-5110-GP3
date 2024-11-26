@@ -11,12 +11,14 @@ namespace Game
 		[Header("General")]
 		[NaughtyAttributes.Expandable]
 		[SerializeField] private GameSettings settings;
+		[SerializeField] private UnityEngine.InputSystem.PlayerInput gameInput;
 
 		[Header("Debug")]
 		[SerializeField] private bool skipStartingAnimation;
 		#endregion
 
 		#region Fields
+		private bool gameStarted = false;
 		private Protagonist protagonist;
 		private readonly HashSet<Classroom> currentlyOverlappingClassrooms = new();
 		private System.Action onPlayerExitClassroom;
@@ -43,9 +45,15 @@ namespace Game
 		{
 			protagonist = FindObjectOfType<Protagonist>();
 			LevelStart();
+			UiStart();
 
 			StartCoroutine(GameStartCoroutine());
 			Debug.Log("Game started.");
+		}
+
+		protected void OnStartGame() {
+			gameInput.currentActionMap = null;
+			gameStarted = true;
 		}
 		#endregion
 
@@ -71,9 +79,18 @@ namespace Game
 		#region Life cycle
 		private IEnumerator GameStartCoroutine()
 		{
-			yield return new WaitForEndOfFrame();
+			gameStarted = false;
+			Protagonist.ControlEnabled = false;
+			Protagonist.EyelidOpenness = 0.0f;
 			RevertScene();
 			MovementGuidanceVisible = false;
+
+			yield return new WaitForEndOfFrame();
+
+			startUi.gameObject.SetActive(true);
+			yield return new WaitUntil(() => gameStarted);
+			startUi.gameObject.SetActive(false);
+			Cursor.lockState = CursorLockMode.Locked;
 
 			if(Application.isEditor)
 			{
@@ -94,6 +111,9 @@ namespace Game
 					yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
 			}
 
+			Protagonist.ControlEnabled = true;
+			Protagonist.EyelidOpenness = 1.0f;
+
 			MovementGuidanceVisible = true;
 			StartCoroutine(WaitForNextLevelToStartCoroutine());
 		}
@@ -101,9 +121,12 @@ namespace Game
 		private IEnumerator FinishGameCoroutine()
 		{
 			Debug.Log($"All levels are passed. Game finished.");
-			yield break;
 
-			// TODO
+			yield return new WaitForSeconds(2.0f);
+
+			Cursor.lockState = CursorLockMode.None;
+			endUi.gameObject.SetActive(true);
+			Time.timeScale = 0.0f;
 		}
 		#endregion
 

@@ -43,13 +43,11 @@ namespace Game
 		protected void OnEnable()
 		{
 			PlayerInput.enabled = true;
-			Cursor.lockState = CursorLockMode.Locked;
 		}
 
 		protected void OnDisable()
 		{
 			PlayerInput.enabled = false;
-			Cursor.lockState = CursorLockMode.None;
 		}
 		#endregion
 
