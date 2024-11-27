@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c242eb77519ee4d4aa6637404581cc69, type: 3}
+  m_Name: Game Settings
+  m_EditorClassIdentifier: 
+  levelTime: 60
+  classStartTime: 36000
+  warningTime: 10
+  notificationTime: 3
+  waitBeforePassing: 2
+  waitAfterPassing: 2
+  maxWaitTime: 10
+  mobileNotification:
+    clip: {fileID: 8300000, guid: 96f9292d4a3788b4c9d43a111ce00fb4, type: 3}
+    volume: 0.5
+  classDismissBell:
+    clip: {fileID: 8300000, guid: dd3aef1c79555a34eab54f0c846adf2d, type: 3}
+    volume: 0.8
+  clockTick:
+    clip: {fileID: 8300000, guid: 9e8cee0c944d3424c97dab01a7b69918, type: 3}
+    volume: 1
+  clockTickGainCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0020684148
+      value: 0.056939535
+      inSlope: 0.024078222
+      outSlope: 0.024078222
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.545743
+    - serializedVersion: 3
+      time: 0.6792562
+      value: 0.55784893
+      inSlope: 2.1275446
+      outSlope: 2.1275446
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14821725
+      outWeight: 0.2039297
+    - serializedVersion: 3
+      time: 1.000776
+      value: 0.99644053
+      inSlope: -0
+      outSlope: -0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

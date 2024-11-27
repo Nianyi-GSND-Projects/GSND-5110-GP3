@@ -40,7 +40,8 @@ namespace NaniCore {
 			if(Application.isPlaying)
 				return;
 #endif
-			gizmosRoot?.gameObject?.SetActive(true);
+			if(gizmosRoot)
+				gizmosRoot.gameObject.SetActive(true);
 		}
 
 		protected void OnDisable() {
@@ -48,7 +49,8 @@ namespace NaniCore {
 			if(Application.isPlaying)
 				return;
 #endif
-			gizmosRoot?.gameObject?.SetActive(false);
+			if(gizmosRoot)
+				gizmosRoot.gameObject.SetActive(false);
 		}
 		#endregion
 

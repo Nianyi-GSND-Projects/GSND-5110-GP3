@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ff45f86d23dda4aba7b7f9502f01b8, type: 3}
   m_Name: Default Protagonist Profile
   m_EditorClassIdentifier: 
-  baseMovementSpeed: 5
+  baseMovementSpeed: 3
   baseOrientationSpeed: 0.2
   invertY: 1
   zenithClamp: 90

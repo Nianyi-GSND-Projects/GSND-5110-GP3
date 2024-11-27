@@ -13,7 +13,7 @@ namespace NaniCore {
 		}
 
 		public override void Invoke() {
-			StartCoroutine(InvokingCoroutine());
+			Game.Game.Instance.StartCoroutine(InvokingCoroutine());
 		}
 	}
 }

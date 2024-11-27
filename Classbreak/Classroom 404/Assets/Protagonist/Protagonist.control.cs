@@ -3,11 +3,15 @@ using UnityEngine;
 namespace Game
 {
 	[RequireComponent(typeof(CharacterController))]
+	[RequireComponent(typeof(Animator))]
 	public partial class Protagonist
 	{
 		#region Fields
 		private CharacterController controller;
 		private ProtagonistInput input;
+		private Animator animator;
+
+		private bool hasReceivedInput = false;
 		#endregion
 
 		#region Life cycle
@@ -15,28 +19,38 @@ namespace Game
 		{
 			controller = GetComponent<CharacterController>();
 			input = GetComponent<ProtagonistInput>();
+			animator = GetComponent<Animator>();
+		}
+
+		private void FixedUpdateControl() {
+			animator.SetBool("IsMoving", hasReceivedInput);
+			hasReceivedInput = false;
+		}
+		#endregion
+
+		#region Properties
+		private ProtagonistInput Input {
+			get {
+				if(input == null)
+					input = GetComponent<ProtagonistInput>();
+				return input;
+			}
 		}
 		#endregion
 
 		#region Interface
-		public bool EnableControl
+		public bool ControlEnabled
 		{
-			get
-			{
-				if(!input)
-					return false;
-				return input.enabled;
-			}
+			get => Input.enabled;
 			set
 			{
-				if(!input && value)
-				{
-					Debug.LogWarning("Cannot enable input due to missing ProtagonistInput component.");
-					return;
-				}
-				input.enabled = value;
+				Input.enabled = value;
+				focus.enabled = value;
 			}
 		}
+
+		public void EnableControl() => ControlEnabled = true;
+		public void DisableControl() => ControlEnabled = false;
 
 		public void AlignTo(Transform target) {
 			controller.enabled = false;
@@ -52,6 +66,7 @@ namespace Game
 		 */
 		public void MoveVelocity(Vector3 velocity)
 		{
+			hasReceivedInput = velocity.magnitude > Mathf.Epsilon;
 			controller.SimpleMove(velocity);
 		}
 

@@ -31,7 +31,7 @@ namespace NaniCore {
 
 		#region Properties
 		public bool IsOpened {
-			get => isOpened;
+			get => Progress > 0.5f;
 			set {
 				if(movementCoroutine != null) {
 					StopCoroutine(movementCoroutine);
@@ -78,8 +78,7 @@ namespace NaniCore {
 				easingFactor
 			);
 			
-			isOpened = targetOpened;
-			if(isOpened)
+			if(targetOpened)
 				onOpened.Invoke();
 			else
 				onClosed.Invoke();
@@ -92,7 +91,7 @@ namespace NaniCore {
 
 			if(Rigidbody != null)
 				Rigidbody.isKinematic = true;
-			Progress = IsOpened ? 1.0f : 0.0f;
+			Progress = isOpened ? 1.0f : 0.0f;
 		}
 		#endregion
 	}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Game
 {
@@ -7,16 +8,27 @@ namespace Game
 	[RequireComponent(typeof(Protagonist))]
 	public class ProtagonistInput : MonoBehaviour
 	{
+		#region Fields
 		private Protagonist protagonist;
 		private PlayerInput playerInput;
+
+		private PlayerInput PlayerInput
+		{
+			get
+			{
+				if(playerInput == null)
+					playerInput = GetComponent<PlayerInput>();
+				return playerInput;
+			}
+		}
+		#endregion
 
 		#region Life cycle
 		protected void Start()
 		{
 			protagonist = GetComponent<Protagonist>();
 
-			playerInput = GetComponent<PlayerInput>();
-			playerInput.actions = Instantiate(playerInput.actions);
+			PlayerInput.actions = Instantiate(PlayerInput.actions);
 
 			MovementEnabled = true;
 			OrientationEnabled = true;
@@ -30,24 +42,24 @@ namespace Game
 
 		protected void OnEnable()
 		{
-			Cursor.lockState = CursorLockMode.Locked;
+			PlayerInput.enabled = true;
 		}
 
 		protected void OnDisable()
 		{
-			Cursor.lockState = CursorLockMode.None;
+			PlayerInput.enabled = false;
 		}
 		#endregion
 
 		#region Functions
 		private bool GetActionMapEnabled(string name)
 		{
-			return playerInput.actions.FindActionMap(name).enabled;
+			return PlayerInput.actions.FindActionMap(name).enabled;
 		}
 
 		private void SetActionMapEnabled(string name, bool enabled)
 		{
-			var map = playerInput.actions.FindActionMap(name);
+			var map = PlayerInput.actions.FindActionMap(name);
 			if(enabled)
 				map.Enable();
 			else
@@ -78,12 +90,14 @@ namespace Game
 		#endregion
 
 		#region Orientation
-		public bool OrientationEnabled {
+		public bool OrientationEnabled
+		{
 			get => GetActionMapEnabled("Orientation");
 			set => SetActionMapEnabled("Orientation", value);
 		}
 
-		protected void OnOrientDelta(InputValue value) {
+		protected void OnOrientDelta(InputValue value)
+		{
 			var raw = value.Get<Vector2>();
 			Vector2 delta = raw * protagonist.Profile.baseOrientationSpeed;
 			if(protagonist.Profile.invertY)
@@ -99,7 +113,8 @@ namespace Game
 			set => SetActionMapEnabled("Interaction", value);
 		}
 
-		protected void OnInteract() {
+		protected void OnInteract()
+		{
 			protagonist.Interact();
 		}
 		#endregion
