@@ -82,6 +82,7 @@ namespace Game
 			gameStarted = false;
 			Protagonist.ControlEnabled = false;
 			Protagonist.EyelidOpenness = 0.0f;
+			Protagonist.DepthFogP = 1.0f;
 			RevertScene();
 			MovementGuidanceVisible = false;
 

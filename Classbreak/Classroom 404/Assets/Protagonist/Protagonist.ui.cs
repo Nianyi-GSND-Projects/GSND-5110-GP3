@@ -48,7 +48,7 @@ namespace Game
 			setEyelidOpennessCoroutine = null;
 		}
 
-		private float DepthFogP
+		public float DepthFogP
 		{
 			get => depthFog.material.GetFloat("_P");
 			set

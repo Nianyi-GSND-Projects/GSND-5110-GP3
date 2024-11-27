@@ -25,7 +25,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Child_3_Marble_1 3
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_Parent: {fileID: 2100000, guid: 9c399e94e1d0783498dbc604c6c89634, type: 2}
+  m_Parent: {fileID: 2100000, guid: cfe2cf43ed9f8214eaaac27333556924, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
