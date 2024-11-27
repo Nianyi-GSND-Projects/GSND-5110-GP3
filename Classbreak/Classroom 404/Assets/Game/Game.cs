@@ -123,7 +123,7 @@ namespace Game
 		{
 			Debug.Log($"All levels are passed. Game finished.");
 
-			yield return new WaitForSeconds(2.0f);
+			yield return new AnimationUtiliity.WaitTillAnimationEnds(endAnimation);
 
 			Protagonist.ControlEnabled = false;
 			Cursor.lockState = CursorLockMode.None;

@@ -9,6 +9,7 @@ namespace Game
 		[Header("Animation")]
 		[SerializeField] private PlayableDirector startAnimation;
 		[SerializeField] private PlayableDirector failAnimation;
+		[SerializeField] private PlayableDirector endAnimation;
 		#endregion
 	}
 }
