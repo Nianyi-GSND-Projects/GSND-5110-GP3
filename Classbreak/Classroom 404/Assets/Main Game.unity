@@ -22698,9 +22698,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1731995143}
-  - component: {fileID: 1731995145}
   - component: {fileID: 1731995144}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Stall-Women's
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22756,24 +22755,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2.5, z: 2.25}
   m_Center: {x: 0, y: 1.25, z: -0.375}
---- !u!114 &1731995145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731995142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e3b830a475b6c4f8d23635ba6dfc20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  number: Stall
-  spawnPoint: {fileID: 0}
-  mapLabel: {fileID: 0}
-  doorPlates:
-  - {fileID: 0}
-  exitBoards: []
 --- !u!1001 &1737151746
 PrefabInstance:
   m_ObjectHideFlags: 0
