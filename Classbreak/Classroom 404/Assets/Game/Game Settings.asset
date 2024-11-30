@@ -23,7 +23,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 96f9292d4a3788b4c9d43a111ce00fb4, type: 3}
     volume: 0.5
   classDismissBell:
-    clip: {fileID: 8300000, guid: dd3aef1c79555a34eab54f0c846adf2d, type: 3}
+    clip: {fileID: 8300000, guid: 879afd3041e3bc747a74b4dd86640c38, type: 3}
     volume: 0.8
   clockTick:
     clip: {fileID: 8300000, guid: 9e8cee0c944d3424c97dab01a7b69918, type: 3}
