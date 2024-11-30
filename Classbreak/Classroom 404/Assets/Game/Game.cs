@@ -11,14 +11,12 @@ namespace Game
 		[Header("General")]
 		[NaughtyAttributes.Expandable]
 		[SerializeField] private GameSettings settings;
-		[SerializeField] private UnityEngine.InputSystem.PlayerInput gameInput;
 
 		[Header("Debug")]
 		[SerializeField] private bool skipStartingAnimation;
 		#endregion
 
 		#region Fields
-		private bool gameStarted = false;
 		private Protagonist protagonist;
 		private readonly HashSet<Classroom> currentlyOverlappingClassrooms = new();
 		private System.Action onPlayerExitClassroom;
@@ -45,15 +43,9 @@ namespace Game
 		{
 			protagonist = FindObjectOfType<Protagonist>();
 			LevelStart();
-			UiStart();
 
 			StartCoroutine(GameStartCoroutine());
 			Debug.Log("Game started.");
-		}
-
-		protected void OnStartGame() {
-			gameInput.currentActionMap = null;
-			gameStarted = true;
 		}
 		#endregion
 
@@ -79,7 +71,6 @@ namespace Game
 		#region Life cycle
 		private IEnumerator GameStartCoroutine()
 		{
-			gameStarted = false;
 			Protagonist.ControlEnabled = false;
 			Protagonist.EyelidOpenness = 0.0f;
 			Protagonist.DepthFogP = 1.0f;
@@ -88,9 +79,6 @@ namespace Game
 
 			yield return new WaitForEndOfFrame();
 
-			startUi.gameObject.SetActive(true);
-			yield return new WaitUntil(() => gameStarted);
-			startUi.gameObject.SetActive(false);
 			Cursor.lockState = CursorLockMode.Locked;
 
 			if(Application.isEditor)
@@ -127,8 +115,8 @@ namespace Game
 
 			Protagonist.ControlEnabled = false;
 			Cursor.lockState = CursorLockMode.None;
-			endUi.gameObject.SetActive(true);
-			Time.timeScale = 0.0f;
+
+			App.EndGame();
 		}
 		#endregion
 

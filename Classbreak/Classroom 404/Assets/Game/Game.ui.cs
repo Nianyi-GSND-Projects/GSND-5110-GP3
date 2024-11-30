@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Runtime.CompilerServices;
 
 namespace Game
 {
@@ -8,18 +7,9 @@ namespace Game
 	{
 		#region Serialized fields
 		[Header("UI")]
-		[SerializeField] private CanvasGroup startUi;
-		[SerializeField] private CanvasGroup endUi;
 		[SerializeField] private StatusUi status;
 		[SerializeField] private MobileUi mobile;
 		[SerializeField] private CanvasGroup movementGuidance;
-		#endregion
-
-		#region Life cycle
-		private void UiStart() {
-			startUi.gameObject.SetActive(false);
-			endUi.gameObject.SetActive(false);
-		}
 		#endregion
 
 		#region Functions
