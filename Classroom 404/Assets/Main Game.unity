@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   departure: {fileID: 0}
-  destination: {fileID: 1259971998}
+  destination: {fileID: 147356122}
   onStart:
     m_PersistentCalls:
       m_Calls: []
@@ -5170,6 +5170,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1442270321}
+  - {fileID: 808137938}
   m_Father: {fileID: 1446959134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &424258498
@@ -11563,12 +11564,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808137937}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.953717, z: -0.30070576, w: 0}
-  m_LocalPosition: {x: -0, y: 1.284, z: 0.75}
+  m_LocalRotation: {x: -0.0000008872111, y: -0.30070576, z: -0.953717, w: -0.0000028138747}
+  m_LocalPosition: {x: 20, y: -1.284, z: 6.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1442270321}
+  m_Father: {fileID: 424258497}
   m_LocalEulerAnglesHint: {x: 35, y: 180, z: 0}
 --- !u!114 &808137939
 MonoBehaviour:
@@ -18341,17 +18342,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3421675402868474637, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
   m_PrefabInstance: {fileID: 1259971995}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1259971998 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5946554887336864933, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
-  m_PrefabInstance: {fileID: 1259971995}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259971997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e3b830a475b6c4f8d23635ba6dfc20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1259971999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3260969991217674638, guid: dc14ccd232086ca4087495b9a5dc2e0a, type: 3}
@@ -20694,7 +20684,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 547028802}
-  - {fileID: 808137938}
   m_Father: {fileID: 424258497}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: -180}
 --- !u!1 &1444380577 stripped
