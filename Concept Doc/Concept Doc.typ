@@ -206,12 +206,43 @@ The player is passively advancing to upcoming levels, without knowing how many l
 Each level has its own special mechanics.
 In order to pass the levels, the player must try to identify their mechanics and overcome the obstacles.
 
+#{
+	show ref: it => link(it.target, [#it.element.body]);
+	[To read more in detail of the level designs, see @sec:level-design.];
+}
 == Progression
 
 When a level is passed, the next level automatically starts in a short time.
 When the last level is passed, the game will roll the ending animation and go to the ending screen.
 
 = Controls
+
+This game is targeted for PC players.
+
+The actions in this game are very simple.
+There are only 3 (1 if you don't count the basic character controls), as shown in @table:action-map.
+
+#{
+	show table.cell.where(y: 0): set text(weight: "bold");
+	[#figure(
+		caption: [The action map of the game.],
+		table(
+			columns: 4,
+			align: left,
+			stroke: none,
+			table.hline(stroke: 1pt),
+			table.header[Action][Meaning][PC][Console#footnote[
+				Theoretically, it could be compatible to console players for free, as the interactions in this game are all very simple and naturally matches with console's input schemes, but due to the limited project life span and lacking of contributors, we didn't have a chance to play-test the game with consoles.
+				Although the input mappings are already set for consoles in the project, just for the sake of credibility, we'll avoid saying that our game is console-compatible.
+			]],
+			table.hline(stroke: 0.5pt),
+			[Movement], [Move around in the scene.], [W/A/S/D], [Right stick],
+			[Orientation], [Look around.], [Mouse], [Left stick],
+			[Interaction], [Interact with objects and trigger logics.], [LMB], [South button],
+			table.hline(stroke: 1pt),
+		),
+	) <table:action-map>];
+}
 
 = Game Aesthetics
 
