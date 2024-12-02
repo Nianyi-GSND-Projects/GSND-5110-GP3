@@ -121,8 +121,153 @@ This relatable setting could create an emotional connection with our target audi
 Players would also constantly get stuck on expected way to the next classroom, so they need to explore unvisited areas to find their way to the destination, and discovering clues and solving puzzles is a delightful experience.
 Under this setting, we could even stuff some absurdity into the puzzle designs, bringing unexpected comedic effects.
 
-#pagebreak()
 = Player Experience
+
+== Scene
+
+=== Visual setting/background
+
+The game takes place on a floor of an old teaching hall.
+The hall is portrayed to be dim, narrow and unpleasant;
+you could imagine a mixture of _The Backroom_ and Nightingale Hall's 5th floor or Holmes Hall’s ground floor (@fig:scene-interior).
+All exits to the outer world are somehow blocked:
+The elevators are out-of-use, there is no entry to staircases, etc (@fig:scene-overview).
+
+#figure(
+	caption: [A snapshot from the scene's interior space.],
+	image("./assets/scene-interior.png",
+		height: 12em,
+	),
+) <fig:scene-interior>
+
+#figure(
+	caption: [
+		An overview of the scene.
+		The exit door on the left-most corner is hidden throughout the game;
+		it only shows up in the last level.
+	],
+	image("./assets/scene-overview.png",
+		height: 16em,
+	),
+) <fig:scene-overview>
+
+=== Classrooms
+
+The teaching hall consists of many classrooms, which make up the main element of this game.
+The classrooms are the departure and destination of the puzzle levels.
+The player should be able to tell the room numbers of the classrooms easily (unless made difficult intentionally by level design).
+Therefore, there is a door plate beside every door (@fig:door-plates).
+
+#figure(
+	caption: [Each classroom door has its own door plate showing the room number.],
+	image("./assets/door-plates.png",
+		height: 14em,
+	),
+) <fig:door-plates>
+
+To enter/exit a classroom, the player could interact with the door knob to open/close the door.
+
+=== Floor map
+
+Another important element is the floor map.
+It is a guidance that could tell the player where is where without them having to navigate the entire scene (@fig:floor-map).
+Many of our level designs are taking advantage of the floor map.
+
+#figure(
+	caption: [The clean floor map texture used in the project.],
+	image("../Classroom 404/Assets/Interior/Floor Map/Floor Map (draft, clean).png",
+		height: 12em,
+	),
+) <fig:floor-map>
+
+When used in game, it is labelled with room numbers and highlighted with a spotlight on the wall (@fig:floor-map-in-game).
+
+#figure(
+	caption: [The in-game floor map.],
+	image("./assets/floor-map-in-scene.png",
+		height: 14em,
+	),
+) <fig:floor-map-in-game>
+
+== UI
+
+=== HUD
+
+There are two HUD elements: the mobile notification and the timer (@fig:hud).
+
+#figure(
+	caption: [The in-game HUD.],
+	image("./assets/hud.png",
+		height: 16em,
+	),
+) <fig:hud>
+
+In each level, the mobile notification pops up first to indicate the start of a new level, then the timer appears and starts counting down.
+The mobile notification soon hides as it's not providing important information in later gameplay.
+
+=== Interaction
+
+The game uses UI indicators to teach players how to control the protagonist.
+
+At the beginning, we teach the basic character control by showing icons representing the input actions (@fig:starting-input-guidance).
+These guidance icons will disappear soon as the player leaves the spawning classroom.
+
+#figure(
+	caption: [Input guidance at start.],
+	image("./assets/starting-input-guidance.png",
+		height: 16em,
+	)
+) <fig:starting-input-guidance>
+
+Some scene objects are able to interact with.
+To do that, the player needs to look at the object and press LMB.
+When they're looking at an interactable object, a mouse icon would show on it (@fig:interaction-indicator).
+
+#figure(
+	caption: [Interaction indicator when focusing on interactable objects.],
+	image("./assets/interaction-indicator.png",
+		height: 12em,
+	)
+) <fig:interaction-indicator>
+
+== Acoustic experience
+
+=== Ambient sound
+
+To render the gloomy, unpleasant vibe of the teaching hall, we applied a subtle humming noise as a global ambient sound.
+
+=== Footsteps
+
+While walking, the sound of footsteps could be heard periodically.
+
+=== Door knobs
+
+When interacting with door knobs, a light opening sound is played at the position of the knob.
+
+=== Bell
+
+When a level start, a bell indicating the dismissal of the last class would be played.
+
+=== Timer
+
+The timer has a periodical tick-tock sound effect, which is nearly inaudible at the beginning, but will gradually increase its volume as the time approaches the scheduled class-starting time.
+We hope that this could achieve a hurrying and gradually panicking experience.
+
+=== Level failing
+
+When the player failed to arrive at classroom 404 on time, the level is failed.
+An ominous sound would be played to indicate the failure, along with a black fog quickly approaching the camera (@fig:black-fog).
+We hope that this could give the player a strong-enough negative stimulus.
+
+#figure(
+	caption: [The black fog approaching the camera.],
+	grid(
+		columns: 2,
+		column-gutter: 0.5em,
+		image("./assets/depth-fog/1.png"),
+		image("./assets/depth-fog/2.png"),
+	)
+) <fig:black-fog>
 
 #pagebreak()
 = Gameplay
