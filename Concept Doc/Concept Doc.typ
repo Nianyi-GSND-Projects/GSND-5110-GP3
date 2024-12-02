@@ -18,7 +18,7 @@
 #set par(justify: true, linebreaks: "optimized")
 #show text.where(lang: "zh"): set text(font: "KaiTi")
 #set heading(numbering: "1.1.1")
-#show heading.where(level: 1): set heading(numbering: (..indices) => {
+#show heading: set heading(numbering: (..indices) => {
 	indices = indices.pos().slice(1);
 	return indices.join(".")
 })
@@ -29,6 +29,7 @@
 	it;
 	v(0.5em);
 }
+#show heading.where(level: 3): set heading(numbering: none, outlined: false)
 
 /* Content */
 
@@ -88,8 +89,9 @@
 	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/releases")[Releases],
 )
 
-#outline()
+#outline(indent: 1em)
 
+#pagebreak()
 = Quick Facts
 
 #((..data) => {
@@ -110,8 +112,6 @@
 	],
 )
 
-#pagebreak()
-
 = Overview
 
 Reach classroom 404 before the next class starts---but every time you arrive, the room's location changes, and the clock rewinds. You're stuck in a time loop! In each loop, new obstacles and eerie surprises block your way, try to solve them with your intelligence! Can you ever reach the reality of the true classroom 404 and break the time loop?
@@ -121,25 +121,105 @@ This relatable setting could create an emotional connection with our target audi
 Players would also constantly get stuck on expected way to the next classroom, so they need to explore unvisited areas to find their way to the destination, and discovering clues and solving puzzles is a delightful experience.
 Under this setting, we could even stuff some absurdity into the puzzle designs, bringing unexpected comedic effects.
 
+#pagebreak()
 = Player Experience
 
 #pagebreak()
-
 = Gameplay
+
+== Walkthrough
+
+@fig:cycle shows the flow of the entire gameplay.
+Please refer to it whenever you're uncertain in the upcoming description.
 
 #figure(
 	image("./assets/Classroom 404 Game Cycle.svg",
 		height: 40em,
 	),
-	caption: [The outline flow chart of _Classroom 404_.],
-)
+	caption: [A flow chart showing the flow of the entire gameplay.],
+) <fig:cycle>
 
-As the class-dismissing bell rings, one class ends, and the students need to get to the next classroom in the teaching hall before the class break ends.
-In this game, the player needs to do the exact same thing: Go to classroom 404 before the next class starts---except that whenever they reach to 404, the bell rings again, the time is reset, and they'll find out that the room they just arrived at is not 404.
-Confused, they leave to find room 404, again, but this time they noticed that something in the hallway is changed---there are obstacles blocking their way to the classroom.
-When they finally reach to the new 404, the same thing happen again.
-This seems like a never-ending loop, and the player is stuck in it!
+#[
+=== Game starts
+
+- The player wakes up in an empty classroom.
+	The class-dismissing bell is ringing.
+
+- A mobile notification pops up in the bottom-right corner of the screen, showing the time & the location of the next class, which is in classroom 404 right after 1 minute.
+	Also a clock would be shown in the bottom-left corner of the screen, with a mark showing the remaining time to the next class.
+	The player could recognize two things:
+
+	- They are playing as a student, just woke up in a classroom where the previous class just ended.
+	- The next class is starting in a short time and they need to rush to the classroom.
+
+=== In-level
+
+- Being aware of this, the player goes out to find the classroom.
+	The mobile notification would hide automatically, but the clock stays to remind the player of the remaining time.
+
+- By reading the floor map and the door numbers, the player managed to find the classroom quickly.
+	As they enter the room, the UI disappears, marking the success of the level.
+
+- A few seconds later, the lights in the classroom go off, the class-dismissing bell rings again.
+	The player must find it weird: How come the bell rings again right after the class just started?
+
+- The mobile nofitication pops up again: The same room 404, the same one-minute-before-class-starts time.
+	The player goes out only to find that the room they are in is not 404 anymore---they need to again find classroom 404.
+
+- So the player tries to go to the next classroom, except that this time, something in the hallway has changed: Some doors are closed, some lights are broken, a janitor cart appears on the way...
+	Something’s wrong, and it’s spooky.
+
+=== End of level
+
+- They reach the classroom, but the same thing happens again, except that more weird things are happening in the hallway, blocking and delaying the player’s pace.
+
+	- If the player failed to arrive on time, the clock would ring an ominous alarm, a black fog would rush towards the camera, and the player would be reset to the last starting classroom, just at the moment the bell starts ringing.
+
+- The cycle continues.
+	The weird things are different each time, making it harder and harder to reach the classroom on time.
+	The player may have to give multiple tries over some cycles.
+
+=== Game ends
+
+- Eventually, there’s a true ending level.
+	There are no more future classes, and when the player opens the door, they could see blue sky and go home.
+]
+
+== Puzzle-solving
+
+Being a puzzle game, the puzzle-solving happens in the main part of each cycle.
+In each cycle, the player needs to navigate to classroom 404 at a new, unknown location.
+On their way finding the room, the player will encounter unexpected obstacles, different in each level.
+
+== Attributes
+
+=== Exploration
+
+The main goal of this game is to find classroom 404, so the player needs to explore the map actively.
+
+=== Indefinite time loop
+
+The player is passively advancing to upcoming levels, without knowing how many levels there will be ahead.
+
+=== Identifying mechanics
+
+Each level has its own special mechanics.
+In order to pass the levels, the player must try to identify their mechanics and overcome the obstacles.
+
+== Progression
+
+When a level is passed, the next level automatically starts in a short time.
+When the last level is passed, the game will roll the ending animation and go to the ending screen.
+
+= Controls
+
+= Game Aesthetics
 
 = MDA Analysis
 
 = Playtest
+
+= Appendix
+
+== Level Design
+<sec:level-design>
