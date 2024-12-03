@@ -20231,6 +20231,97 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: dd3c02c852ea8c94f8070301f266e32e, type: 3}
   m_PrefabInstance: {fileID: 1396917267}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1401649345
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1644964275}
+    m_Modifications:
+    - target: {fileID: 251092422054088112, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833748746965307313, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_Name
+      value: Upper Torn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125773696069079336, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9616363
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.702
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4243182650628116469, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_Name
+      value: Torn Floor Map Ancor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734684589802831172, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.824
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+--- !u!4 &1401649346 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1819992054693818257, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+  m_PrefabInstance: {fileID: 1401649345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1401649347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4243182650628116469, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+  m_PrefabInstance: {fileID: 1401649345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1411093692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20487,7 +20578,7 @@ GameObject:
   - component: {fileID: 1446959135}
   - component: {fileID: 1446959136}
   m_Layer: 0
-  m_Name: 'L05: Erased Door Plates'
+  m_Name: 'L05: Erased  Plates and Flipped Map'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20537,10 +20628,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1357841547}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1245473796}
+        m_TargetAssemblyTypeName: Game.TransformAgent, Assembly-CSharp
+        m_MethodName: SetLEAZ
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 180
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1245473796}
+        m_TargetAssemblyTypeName: Game.TransformAgent, Assembly-CSharp
+        m_MethodName: SetLEAZ
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -20549,9 +20655,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
   overrideReverting: 0
   onReverting:
     m_PersistentCalls:
@@ -23309,7 +23412,7 @@ GameObject:
   - component: {fileID: 1644964275}
   - component: {fileID: 1644964276}
   m_Layer: 0
-  m_Name: 'L07: Humor'
+  m_Name: 'L07: Humor and Torn Map'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23327,7 +23430,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1401649346}
   m_Father: {fileID: 1859362629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1644964276
@@ -23346,10 +23450,58 @@ MonoBehaviour:
   destination: {fileID: 1222789746}
   onStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1357841547}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4243182650628116469, guid: f4588bf4f76356f49adad2f77bd960b0, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1357841547}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1401649347}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   overrideReverting: 0
   onReverting:
     m_PersistentCalls:
@@ -24091,7 +24243,7 @@ GameObject:
   - component: {fileID: 1702760806}
   - component: {fileID: 1702760807}
   m_Layer: 0
-  m_Name: 'L56: Flipped Map'
+  m_Name: 'L56: Erased  Plates and Dislocated Map'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24142,25 +24294,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1245473796}
-        m_TargetAssemblyTypeName: Game.TransformAgent, Assembly-CSharp
-        m_MethodName: SetLEAZ
-        m_Mode: 4
+      - m_Target: {fileID: 1357841547}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 180
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1245473796}
-        m_TargetAssemblyTypeName: Game.TransformAgent, Assembly-CSharp
-        m_MethodName: SetLEAZ
-        m_Mode: 4
+      - m_Target: {fileID: 1509256575}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -24168,6 +24317,33 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  onEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1357841547}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1509256575}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   overrideReverting: 0
   onReverting:
