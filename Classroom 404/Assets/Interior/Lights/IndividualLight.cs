@@ -38,26 +38,7 @@ namespace Game
 		#region Life cycle
 		protected void Start()
 		{
-			lights = new(GetComponentsInChildren<HDAdditionalLightData>(true)
-				.Select(light => new KeyValuePair<HDAdditionalLightData, LightConfig>(
-					light,
-					new LightConfig
-					{
-						intensity = light.intensity,
-					}
-				))
-			);
-			renderers = new(GetComponentsInChildren<Renderer>(true)
-				.Where(renderer => renderer.sharedMaterial.GetInt(PropertyNames.useEmission) != 0)
-				.Select(renderer => new KeyValuePair<Renderer, RendererConfig>(
-					renderer,
-					new RendererConfig
-					{
-						emissiveColor = renderer.material.GetColor(PropertyNames.emissionColor),
-						emissionIntensity = renderer.material.GetFloat(PropertyNames.emissionIntensity),
-					}
-				))
-			);
+			FetchComponents();
 		}
 		#endregion
 
@@ -67,6 +48,7 @@ namespace Game
 			get => intensity;
 			set
 			{
+				FetchComponents();
 				value = Mathf.Max(0, value);
 
 				foreach(var (light, config) in lights)
@@ -94,7 +76,8 @@ namespace Game
 		#region Functions
 		private void AdjustIntensitySmoothly(float targetIntensity)
 		{
-			if(adjustIntensitySmoothlyCoroutine != null) {
+			if(adjustIntensitySmoothlyCoroutine != null)
+			{
 				StopCoroutine(adjustIntensitySmoothlyCoroutine);
 				adjustIntensitySmoothlyCoroutine = null;
 			}
@@ -107,13 +90,44 @@ namespace Game
 			float totalTime = Mathf.Abs(delta / speed);
 
 			float startIntensity = Intensity;
-			for(float startTime = Time.time, elapsed; (elapsed = Time.time - startTime) < totalTime; ) {
+			for(float startTime = Time.time, elapsed; (elapsed = Time.time - startTime) < totalTime;)
+			{
 				Intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsed / totalTime);
 				yield return new WaitForEndOfFrame();
 			}
 			Intensity = targetIntensity;
 
 			adjustIntensitySmoothlyCoroutine = null;
+		}
+
+		private void FetchComponents()
+		{
+			if(lights == null)
+			{
+				lights = new(GetComponentsInChildren<HDAdditionalLightData>(true)
+					.Select(light => new KeyValuePair<HDAdditionalLightData, LightConfig>(
+						light,
+						new LightConfig
+						{
+							intensity = light.intensity,
+						}
+					))
+				);
+			}
+			if(renderers == null)
+			{
+				renderers = new(GetComponentsInChildren<Renderer>(true)
+					.Where(renderer => renderer.sharedMaterial.GetInt(PropertyNames.useEmission) != 0)
+					.Select(renderer => new KeyValuePair<Renderer, RendererConfig>(
+						renderer,
+						new RendererConfig
+						{
+							emissiveColor = renderer.material.GetColor(PropertyNames.emissionColor),
+							emissionIntensity = renderer.material.GetFloat(PropertyNames.emissionIntensity),
+						}
+					))
+				);
+			}
 		}
 		#endregion
 	}
