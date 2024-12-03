@@ -81,24 +81,18 @@ namespace Game
 
 			Cursor.lockState = CursorLockMode.Locked;
 
-			if(Application.isEditor)
+			if(!Application.isEditor || !skipStartingAnimation)
 			{
-				if(!skipStartingAnimation)
-				{
-					startAnimation.Play();
-					yield return new WaitForEndOfFrame();
-					startAnimation.Pause();
-				}
+				startAnimation.Play();
+				yield return new WaitForEndOfFrame();
+				startAnimation.Pause();
 			}
 
 			yield return new WaitForSeconds(1.0f);
 			PlaySoundEffect(Settings.classDismissBell);
 
-			if(Application.isEditor)
-			{
-				if(!skipStartingAnimation)
-					yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
-			}
+			if(!Application.isEditor || !skipStartingAnimation)
+				yield return new AnimationUtiliity.WaitTillAnimationEnds(startAnimation);
 
 			Protagonist.ControlEnabled = true;
 			Protagonist.EyelidOpenness = 1.0f;
