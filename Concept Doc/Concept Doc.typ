@@ -77,11 +77,17 @@
 
 #flex(
 	maxcolumn: 5,
-	mlink("https://trello.com/invite/b/672edd5f7abed9fb9f9fa34c/ATTI5d6206837aa4d4bc65d880d861dc1842BA71A0AA/gsnd-5110-gp3-the-duo")[Trello Board],
-	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3")[GitHub Repository],
+	mlink("https://trello.com/invite/b/672edd5f7abed9fb9f9fa34c/ATTI5d6206837aa4d4bc65d880d861dc1842BA71A0AA/gsnd-5110-gp3-the-duo")[Trello],
+	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3")[GitHub],
 	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/blob/master/Team%20Log/Team%20Log.md")[Team Log],
 	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/releases")[Releases],
+	mlink("https://nianyi-wang.itch.io/classroom-404")[itch.io],
 )
+
+#{
+	set align(center);
+	image("../Promotion/banner/banner 21x9.png", width: 100%);
+}
 
 #outline(indent: 1em)
 
@@ -516,7 +522,7 @@ As mentioned in @par:experience-door-knobs, a creaking sound would be made when 
 
 #[
 
-#show heading.where(level: 3): set heading(outlined: true)
+// #show heading.where(level: 3): set heading(outlined: true)
 
 === Tutorials
 
