@@ -315,7 +315,14 @@ Please refer to it whenever you're uncertain in the upcoming description.
 === Game ends
 
 - Eventually, there’s a true ending level.
-	There are no more future classes, and when the player opens the door, they could see blue sky and go home.
+	There are no more future classes, and when the player opens the door, they could see blue sky and go home (@fig:escape).
+
+	#figure(
+		image("./assets/escape.png",
+			height: 16em,
+		),
+		caption: [The final escape.],
+	) <fig:escape>
 ]
 
 == Puzzle-solving
@@ -457,6 +464,50 @@ This could give the player a panicking feeling, as well as a strong-enough negat
 As mentioned in @par:experience-door-knobs, a creaking sound would be made when the player interacts with a door knob, so that they know that they've just successfully interacted with it.
 
 = MDA Analysis
+
+#{
+	set align(center);
+	set text(size: 0.8em);
+	show table.cell.where(y: 0): set text(weight: "bold", size: 1.25em);
+	table(
+		columns: (12em, 1.5fr, 1fr),
+		align: left,
+		stroke: none,
+		table.hline(stroke: 1pt),
+		table.header([Aesthetics], [Dynamics], [Mechanics]),
+		table.hline(stroke: 0.5pt),
+
+		[Being stuck in a weird time loop.],
+		[The never-ending repeating class dismissal, and the time-reset when failed to reach the classroom on time.],
+		[The core game loop.],
+
+		[The unpleasant, spooky liminal vibe.],
+		[The player just views and listens.],
+		[The visual and acoustic designs.],
+
+		[The feeling of being played or watched.],
+		[The scene changes in each cycle, as if something is controlling the time loop.],
+		[The level progression.],
+
+		[Exploration],
+		[The player needs to explore and traverse the scene to pass the levels.],
+		[The levels are passed by arriving the correct classrooms.],
+
+		[Discovery],
+		[The players could pass a level by figuring out its pattern.],
+		[Each level features a special puzzle design.],
+
+		[Surprising],
+		[Noticing that something is changed in the scene.],
+		[Levels could add/remove/modify scene objects.],
+
+		[Complement and achievement],
+		[The game has a clear ending to tell the player that they've completed the game.],
+		[The ending animation and UI.],
+
+		table.hline(stroke: 1pt),
+	);
+}
 
 = Appendix
 
