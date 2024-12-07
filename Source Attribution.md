@@ -17,7 +17,7 @@
 
 ## Assets
 - Horror School Props: [Unity AssetStore](https://assetstore.unity.com/packages/3d/props/furniture/horror-school-props-112589)
-- Door Free Pack Aferar [Unity AssetStore](https://assetstore.unity.com/packages/3d/props/interior/door-free-pack-aferar-148411)
-- Floor Textures [Unity AssetStore](https://assetstore.unity.com/packages/2d/textures-materials/floor-textures-4k-179126)
-- P3D: Indoor Design Starter Kit (3D Models Furniture) [Unity AssetStore](https://assetstore.unity.com/packages/3d/props/p3d-indoor-design-starter-kit-3d-models-furniture-264116)
+- Door Free Pack Aferar: [Unity AssetStore](https://assetstore.unity.com/packages/3d/props/interior/door-free-pack-aferar-148411)
+- Floor Textures: [Unity AssetStore](https://assetstore.unity.com/packages/2d/textures-materials/floor-textures-4k-179126)
+- P3D Indoor Design Starter Kit (3D Models Furniture): [Unity AssetStore](https://assetstore.unity.com/packages/3d/props/p3d-indoor-design-starter-kit-3d-models-furniture-264116)
   
