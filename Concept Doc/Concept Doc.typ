@@ -70,8 +70,6 @@
 	),
 )
 
-#heading(level: 1, outlined: false)[Links]
-
 #let mlink = (url, txt) => {
 	show link: set text(fill: blue);
 	link(url)[#underline(txt)];
@@ -166,15 +164,15 @@ To enter/exit a classroom, the player could interact with the door knob to open/
 === Floor map
 
 Another important element is the floor map.
-It is a guidance that could tell the player where is where without them having to navigate the entire scene (@fig:floor-map).
+It is a guidance that could tell the player where is where without them having to navigate the entire scene (@fig:floor-map-clean).
 Many of our level designs are taking advantage of the floor map.
 
 #figure(
 	caption: [The clean floor map texture used in the project.],
-	image("../Classroom 404/Assets/Interior/Floor Map/Floor Map (draft, clean).png",
+	image("./assets/Floor Map (clean).png",
 		height: 12em,
 	),
-) <fig:floor-map>
+) <fig:floor-map-clean>
 
 When used in game, it is labelled with room numbers and highlighted with a spotlight on the wall (@fig:floor-map-in-game).
 
@@ -469,23 +467,24 @@ As mentioned in @par:experience-door-knobs, a creaking sound would be made when 
 	set align(center);
 	set text(size: 0.8em);
 	show table.cell.where(y: 0): set text(weight: "bold", size: 1.25em);
+	show table.cell.where(x: 0): set par(justify: false);
 	table(
-		columns: (12em, 1.5fr, 1fr),
+		columns: (11em, 1.5fr, 1fr),
 		align: left,
 		stroke: none,
 		table.hline(stroke: 1pt),
 		table.header([Aesthetics], [Dynamics], [Mechanics]),
 		table.hline(stroke: 0.5pt),
 
-		[Being stuck in a weird time loop.],
+		[Being stuck in a weird time loop],
 		[The never-ending repeating class dismissal, and the time-reset when failed to reach the classroom on time.],
 		[The core game loop.],
 
-		[The unpleasant, spooky liminal vibe.],
+		[The unpleasant, spooky liminal vibe],
 		[The player just views and listens.],
 		[The visual and acoustic designs.],
 
-		[The feeling of being played or watched.],
+		[Being played or watched],
 		[The scene changes in each cycle, as if something is controlling the time loop.],
 		[The level progression.],
 
@@ -513,3 +512,141 @@ As mentioned in @par:experience-door-knobs, a creaking sound would be made when 
 
 == Level Design
 <sec:level-design>
+
+#[
+
+#show heading.where(level: 3): set heading(outlined: true)
+
+=== Tutorial \& Advanced tutorial
+
+The starting levels have an extremely important task: introduce the basic mechanism of the game to the player.
+We hope that in the first one or two levels, the player would learn that:
+
++ The goal of this game is to go to classroom 404;
++ they need to actively find it before the time runs out.
+
+Having this goal, we designed two levels, _Tutorial_ (@fig:l-tutorial) and _Advanced Tutorial_ (@fig:l-advanced-tutorial) as the starting levels of the game.
+
+#grid(
+	columns: 2,
+	column-gutter: 0.5em,
+	[#figure(
+		image("./assets/levels/tutorial.png"),
+		caption: [The designed route of _Tutorial_.],
+	) <fig:l-tutorial>],
+	[#figure(
+		image("./assets/levels/advanced tutorial.png"),
+		caption: [The designed route of _Advanced Tutorial_.],
+	) <fig:l-advanced-tutorial>],
+)
+
+In _Tutorial_, the player spawns in room 402 on the east side.
+Upon opening the door, the mobile notification would pop out to tell them to go to 404.
+They'll see that they're inside a hallway, and the numbers on the room doors.
+Naturally, they'll move along the direction that the numbers are increasing, because they just came out from 402, but after 403 it's 405.
+Then after the first corner, the player should be able to directly see that 404 is just on the other side (@fig:l1-corner), which is the actual room 407 (the door number is changed by the program), so they could go straight for it.
+
+#figure(
+	image("./assets/levels/l1 corner.png", height: 16em),
+	caption: [The view at the corner in _Tutorial_.],
+) <fig:l1-corner>
+
+As the player enters room 407 (appearing as 404), the class dismissal bell would ring again and the light in the room would go off.
+When they turn around, the player should be able to see the actual room number hanging on the interior wall above the door (@fig:l1-ending).
+This is where they might get confused and try to figure out what's wrong.
+They might wander around in the room for a while to see if anything is interactable, or they might just go out directly to check the room number on the outside.
+Either way, the mobile notification would pop up again in a short period (faster if they went out), urging the player to go and find the "new" room 404.
+
+#figure(
+	image("./assets/levels/l1 ending.png", height: 16em),
+	caption: [The true room number the player sees after finishing _Tutorial_.],
+) <fig:l1-ending>
+
+That's where the second level, _Advanced Tutorial_ comes out.
+In this level, another important element for this game is introduced: the floor map (as can be seen in the previous @fig:floor-map-clean).
+It serves as a in-game guidance; the player could use it as a reference to locate room 404 faster.
+
+So when they come out of room 407, by inertia they might continue going down the hallway in the previous direction.
+The destination for this level is hidden in the corner of the map, so it's very likely they'll miss it when walking pass by the cross.
+When they turned west on the southern corner, it's hard not to see the floor map because it's a very big piece hanging on the wall, while also being highlighted by a spot light.
+So they'll walk up to read it, and find the destination easily.
+
+=== Blockade series
+
+There are two levels in this series, all featuring the appearance of objects blocking the hallway.
+
+#grid(
+	columns: 2,
+	column-gutter: 0.5em,
+	[#figure(
+		image("./assets/levels/blockade.png"),
+		caption: [The designed route of _Blockades_.],
+	) <fig:l-blockade>],
+	[#figure(
+		image("./assets/levels/hidden passageway.png"),
+		caption: [The designed route of _Hidden Passageway_.],
+	) <fig:l-hidden-passageway>],
+)
+
+In _Blockades_ (@fig:l-blockade), two pieces of blockades appear in the hallway, completely blocking the player's way to the upper part of the floor.
+When the player gets out of 410, they'll first see the east blockade.
+Since the way to the north is blocked, they'll go read the floor map and see that room 404 is on the north-west corner.
+Then they'll try to use the west path, only to find that it's blocked as well.
+They might try to wander around to find some hidden tunnels, but when they eventually go back and carefully read the floor map again, they'll see that the game lab in the middle actually has 2 doors, linking the upper and lower part of the floor.
+
+In _Hidden Passageway_ (@fig:l-hidden-passageway), the door of 404 is blocked, but the wall of an adjacent room is removed, so the player could enter 404 from that room's door.
+
+=== Erased plate series
+
+In this series, all the numbers on the doors are erased (@fig:erased), so the player has to either explore by brute force, or rely on the floor map.
+
+#figure(
+	image("./assets/levels/erased-doorplates.png", height: 16em),
+	caption: [All the numbers on the doors are erased.],
+) <fig:erased>
+
+In _Flipped map_, the floor map is... well, flipped (@fig:flipped).
+This requires the player to use their spatial imagery to pass the level.
+
+#figure(
+	image("./assets/levels/flipped-floor-map.png", height: 16em),
+	caption: [The flipped floor map.],
+) <fig:flipped>
+
+In _Dislocated map_, the floor map is moved to the wall on the north-most side of the floor, breaking the player's expectation.
+
+=== Black-out
+
+All the lights in the teaching hall went off (@fig:black-out), except for:
+
+- the floor lights, which remains on to show the pathways,
+- and the spot light lighting the floor map.
+
+The player also must rely on the floor map to locate classroom 404 in this level, and the darked out environment makes this more necessary, as it's very easy to lose direction.
+
+#figure(
+	image("./assets/levels/black-out.png", height: 16em),
+	caption: [All lights are turned off in _Black-out_.],
+) <fig:black-out>
+
+=== Humor
+
+The destination classroom is a stall in the restrooms.
+
+The map is also torn to force the player to stop and think the possible locations of 404.
+The only unvisited rooms at this stage should be the restrooms.
+We hope that this could bring the player a strong _Eureka!_ moment and the satisfaction of their theory getting validated.
+
+=== Final escape
+
+The floor map is totally normal, but 404 is missing.
+A door leading to 404 that doesn't previously exist appears on the south-west corner of the hallway, which used to be empty.
+When opened, the player could see blue sky behind it (as can be seen in the previous @fig:escape).
+The game-ending animation would be rolled after the player left from the door.
+
+]
+
+== Trivia
+
+- When Bob was playing _Humor_ in the live session, it didn't take him a second to figure out that it was the restrooms.
+	In fact, he shouted "I knew it!"
