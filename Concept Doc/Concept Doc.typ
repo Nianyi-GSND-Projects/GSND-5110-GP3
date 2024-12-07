@@ -18,10 +18,6 @@
 #set par(justify: true, linebreaks: "optimized")
 #show text.where(lang: "zh"): set text(font: "KaiTi")
 #set heading(numbering: "1.1.1")
-#show heading: set heading(numbering: (..indices) => {
-	indices = indices.pos().slice(1);
-	return indices.join(".")
-})
 #show heading.where(level: 1): it => {
 	set align(center);
 	set text(size: 16pt);
@@ -29,7 +25,7 @@
 	it;
 	v(0.5em);
 }
-#show heading.where(level: 3): set heading(numbering: none, outlined: false)
+#show heading.where(level: 3): set heading(outlined: false)
 
 /* Content */
 
@@ -231,6 +227,7 @@ When they're looking at an interactable object, a mouse icon would show on it (@
 ) <fig:interaction-indicator>
 
 == Acoustic experience
+<sec:acoustic-experience>
 
 === Ambient sound
 
@@ -241,6 +238,7 @@ To render the gloomy, unpleasant vibe of the teaching hall, we applied a subtle 
 While walking, the sound of footsteps could be heard periodically.
 
 === Door knobs
+<par:experience-door-knobs>
 
 When interacting with door knobs, a light opening sound is played at the position of the knob.
 
@@ -254,20 +252,10 @@ The timer has a periodical tick-tock sound effect, which is nearly inaudible at 
 We hope that this could achieve a hurrying and gradually panicking experience.
 
 === Level failing
+<par:experience-level-failing>
 
 When the player failed to arrive at classroom 404 on time, the level is failed.
-An ominous sound would be played to indicate the failure, along with a black fog quickly approaching the camera (@fig:black-fog).
-We hope that this could give the player a strong-enough negative stimulus.
-
-#figure(
-	caption: [The black fog approaching the camera.],
-	grid(
-		columns: 2,
-		column-gutter: 0.5em,
-		image("./assets/depth-fog/1.png"),
-		image("./assets/depth-fog/2.png"),
-	)
-) <fig:black-fog>
+An ominous sound would be played to indicate the failure.
 
 #pagebreak()
 = Gameplay
@@ -391,9 +379,84 @@ There are only 3 (1 if you don't count the basic character controls), as shown i
 
 = Game Aesthetics
 
-= MDA Analysis
+In cooperation with the background setting of being stuck in a time loop, we wanted to achieve a liminal, spooky, unpleasant aesthetics.
+Several designs are applied in the game.
 
-= Playtest
+== Environment
+
+The environment is mostly monotonous, mimicking the interior space of a gloomy teaching hall.
+There are absolutely no figure-like characters appearing in the entirely of the game, all that the player could see is just the empty hallway, the lights, the doors, and some furnitures.
+Not only this could create a vibe of loneliness, it also makes any changes in environment made by the levels instantly eye-catching (e.g. @fig:abrupt-blockade).
+
+#figure(
+	image("./assets/abrupt-blockade.png",
+		height: 16em,
+	),
+	caption: [An abrupt blockade in the hallway.],
+) <fig:abrupt-blockade>
+
+We have proposed an alternative style of design at an early stage of the project, that is to make the scene super realistic.
+Unfortunately, that would require an abundant amount of efforts put into adding and polishing the details.
+Due to the limitation of the time span of the project and our range of ability, we chose to abandon this approach.
+But if it were successfully excuted, we think it'd render the liminal atmosphere even better.
+
+== Immersiveness and realism
+
+=== Acoustics
+
+Many acoustic designs mentioned in @sec:acoustic-experience are applied for realism as well as helping render the atmosphere.
+
+What we could improve on the this side is to add spatial reverbs.
+It could make the acoustic environment more realistic and render the eerie vibe even better.
+
+=== Visual composition
+
+The scene architectures are applied with realistic marble and wooden materials.
+
+There are lights on the hallway and room ceiling, and also on the floor (to show the way in the "Black-out" level).
+They are making the alternating lit-dark pattern on the walls.
+
+Spot lights are also used on the floor map as a visual clue to guide the player to read it.
+
+=== Post-process
+
+Post-process filters are applied to enhance the visual style (@fig:post-process-comparison).
+
+#figure(
+	caption: [A comparison of the visual appearances with and without post-effect of the same view.],
+	grid(
+		columns: 2,
+		column-gutter: 0.5em,
+		image("./assets/without-post-effects.png"),
+		image("./assets/with-post-effects.png"),
+	)
+) <fig:post-process-comparison>
+
+== Responsiveness
+
+Our game tries to avoid using explicit guidances, so to make sure that the players won't feel lost, some elements are responsive.
+When the player makes some actions, they could get instant responses.
+
+=== Level failing
+
+When a level is failed, not only the ominous sound effect mentioned in @par:experience-level-failing would be played, also a black fog would quickly approach the camera (@fig:black-fog).
+This could give the player a panicking feeling, as well as a strong-enough negative stimulus.
+
+#figure(
+	caption: [The black fog approaching the camera.],
+	grid(
+		columns: 2,
+		column-gutter: 0.5em,
+		image("./assets/depth-fog/1.png"),
+		image("./assets/depth-fog/2.png"),
+	)
+) <fig:black-fog>
+
+=== Door knobs
+
+As mentioned in @par:experience-door-knobs, a creaking sound would be made when the player interacts with a door knob, so that they know that they've just successfully interacted with it.
+
+= MDA Analysis
 
 = Appendix
 
