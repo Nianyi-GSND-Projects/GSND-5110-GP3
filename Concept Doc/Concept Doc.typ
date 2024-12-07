@@ -508,6 +508,7 @@ As mentioned in @par:experience-door-knobs, a creaking sound would be made when 
 	);
 }
 
+#pagebreak()
 = Appendix
 
 == Level Design
@@ -517,7 +518,7 @@ As mentioned in @par:experience-door-knobs, a creaking sound would be made when 
 
 #show heading.where(level: 3): set heading(outlined: true)
 
-=== Tutorial \& Advanced tutorial
+=== Tutorials
 
 The starting levels have an extremely important task: introduce the basic mechanism of the game to the player.
 We hope that in the first one or two levels, the player would learn that:
@@ -571,7 +572,7 @@ The destination for this level is hidden in the corner of the map, so it's very 
 When they turned west on the southern corner, it's hard not to see the floor map because it's a very big piece hanging on the wall, while also being highlighted by a spot light.
 So they'll walk up to read it, and find the destination easily.
 
-=== Blockade series
+=== Blockade
 
 There are two levels in this series, all featuring the appearance of objects blocking the hallway.
 
@@ -596,7 +597,7 @@ They might try to wander around to find some hidden tunnels, but when they event
 
 In _Hidden Passageway_ (@fig:l-hidden-passageway), the door of 404 is blocked, but the wall of an adjacent room is removed, so the player could enter 404 from that room's door.
 
-=== Erased plate series
+=== Erased door numbers
 
 In this series, all the numbers on the doors are erased (@fig:erased), so the player has to either explore by brute force, or rely on the floor map.
 
@@ -648,5 +649,15 @@ The game-ending animation would be rolled after the player left from the door.
 
 == Trivia
 
-- When Bob was playing _Humor_ in the live session, it didn't take him a second to figure out that it was the restrooms.
-	In fact, he shouted "I knew it!"
+- This is the second version of design for this GP.
+	Previously we tried a version where the player needs to carry crates from one place to another, one at a time, back and forth.
+	But we couldn't come up with any fun level design, so we switched to the current design.
+
+- When Bob was trying _Humor_ in the live session, it didn't take him a second to figure out that it was the restrooms.
+	In fact, he shouted "I knew it!" when he reached the stall.
+
+- When Nianyi was playing some levels designed by Sadaf, he really felt the spookiness which he didn't feel when he was testing the levels made by himself at the earlier prototype stage.
+	Apparently, knowing how the levels work would take away the vibe.
+
+- When Xinyi was playing our game in the final showcase class, he totally missed the tutorial level designs.
+	Although when we were doing playtests, almost every player followed the intended route.
