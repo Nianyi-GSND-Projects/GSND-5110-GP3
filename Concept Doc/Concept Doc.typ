@@ -86,7 +86,7 @@
 
 #{
 	set align(center);
-	image("../Promotion/banner/banner 21x9.png", width: 100%);
+	image("../Promotion/banner/banner 21x9.png", height: 16em);
 }
 
 #outline(indent: 1em)
@@ -667,3 +667,37 @@ The game-ending animation would be rolled after the player left from the door.
 
 - When Xinyi was playing our game in the final showcase class, he totally missed the tutorial level designs.
 	Although when we were doing playtests, almost every player followed the intended route.
+
+- After Nianyi published the game to itch.io and spread the link to his friends, the most feedback Nianyi got is: "Is there any horror element in your game? I'm a bit scared while playing it."
+
+== External resource attribution
+
+#[
+
+#show link: it => underline(text(it, fill: blue))
+
+=== Audios
+
+- Gloomy ambient sound loop: #link("https://freesound.org/people/newlocknew/sounds/691815/")[AMBDsgn_Otherworldly Gloomy Industrial Ambience 2-2_EM.wav]
+- Seemingly people taking background noise: #link("https://freesound.org/people/jorge.joyanes1/sounds/664037/")[Espacio sonoro 1.wav]
+- Door knob opening: #link("https://freesound.org/people/SoundDragon18/sounds/489473/")[Door Knob.wav]
+- Door opening: #link("https://freesound.org/people/BenjaminNelan/sounds/321085/")[Open Door #2]
+- Phone notification: #link("https://freesound.org/people/FoolBoyMedia/sounds/352651/")[Piano Notification 3]
+- Clock ticking: #link("https://freesound.org/people/GammaGool/sounds/759501/")[Tick Tock Dry]
+- Dying sound: #link("https://freesound.org/people/MeijstroAudio/sounds/372212/")[Bright Metal Rise 001]
+- Bell: #link("https://freesound.org/people/creeeeak/sounds/531021/")[bell2.wav]
+
+=== Images
+
+- Blackboard logo: #link("https://stock.adobe.com/search?k=dirty+chalkboard")[Adobe Stock]
+	- Chalk text: Generated with #link("https://fontmeme.com/chalk-fonts/")[fontmeme.com]
+- Skybox texture: Migrated from Nianyi's undergraduate capstone
+
+=== 3D Models
+
+- Horror school props: #link("https://assetstore.unity.com/packages/3d/props/furniture/horror-school-props-112589")[Unity AssetStore]
+- Door free pack aferar: #link("https://assetstore.unity.com/packages/3d/props/interior/door-free-pack-aferar-148411")[Unity AssetStore]
+- Floor textures: #link("https://assetstore.unity.com/packages/2d/textures-materials/floor-textures-4k-179126")[Unity AssetStore]
+- P3D indoor design starter kit (3D models furniture): #link("https://assetstore.unity.com/packages/3d/props/p3d-indoor-design-starter-kit-3d-models-furniture-264116")[Unity AssetStore]
+
+]
