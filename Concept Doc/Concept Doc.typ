@@ -76,12 +76,13 @@
 }
 
 #flex(
-	maxcolumn: 5,
+	maxcolumn: 10,
 	mlink("https://trello.com/invite/b/672edd5f7abed9fb9f9fa34c/ATTI5d6206837aa4d4bc65d880d861dc1842BA71A0AA/gsnd-5110-gp3-the-duo")[Trello],
 	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3")[GitHub],
 	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/blob/master/Team%20Log/Team%20Log.md")[Team Log],
 	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/releases")[Releases],
 	mlink("https://nianyi-wang.itch.io/classroom-404")[itch.io],
+	mlink("https://www.youtube.com/watch?v=8zsTWFdrohA")[Playthrough],
 )
 
 #{
