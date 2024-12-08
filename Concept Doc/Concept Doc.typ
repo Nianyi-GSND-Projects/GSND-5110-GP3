@@ -653,6 +653,8 @@ The game-ending animation would be rolled after the player left from the door.
 
 ]
 
+#show link: it => underline(text(it, fill: blue))
+
 == Trivia
 
 - This is the second version of design for this GP.
@@ -670,11 +672,21 @@ The game-ending animation would be rolled after the player left from the door.
 
 - After Nianyi published the game to itch.io and spread the link to his friends, the most feedback Nianyi got is: "Is there any horror element in your game? I'm a bit scared while playing it."
 
+- We got this comment from a freshman from Nianyi's undergraduate university:
+	#{
+		set align(center);
+		image("./assets/remind.jpg", height: 4em);
+		show quote: set block(spacing: 1em);
+		quote(block: true, quotes: true)[玩这个游戏我想起来了自己十分钟从梆赶去四十八教的紧张感];
+		quote(block: true, quotes: true)[Playing this game, I'm reminded of the tension of myself rushing from _Bangzijing_ (the dormitory) to \#48 teaching hall in 10 minutes.];
+	}
+	(You could check the translation yourself :))
+
+	This is really cool, as the fact is that the idea of our game actually originates from his experience of running the very same route as described in #link("http://wangnianyi2001.com/blog/2024-09-16-the-art-of-game-design-book-note-1/")[Nianyi's blog].
+	This kid just see through our idea directly!
+	So it seems like we really did a successful job of creating and delivering the emotion!
+
 == External resource attribution
-
-#[
-
-#show link: it => underline(text(it, fill: blue))
 
 === Audios
 
@@ -699,5 +711,3 @@ The game-ending animation would be rolled after the player left from the door.
 - Door free pack aferar: #link("https://assetstore.unity.com/packages/3d/props/interior/door-free-pack-aferar-148411")[Unity AssetStore]
 - Floor textures: #link("https://assetstore.unity.com/packages/2d/textures-materials/floor-textures-4k-179126")[Unity AssetStore]
 - P3D indoor design starter kit (3D models furniture): #link("https://assetstore.unity.com/packages/3d/props/p3d-indoor-design-starter-kit-3d-models-furniture-264116")[Unity AssetStore]
-
-]
