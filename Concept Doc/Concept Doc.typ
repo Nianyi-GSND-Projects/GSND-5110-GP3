@@ -76,12 +76,20 @@
 }
 
 #flex(
-	maxcolumn: 5,
-	mlink("https://trello.com/invite/b/672edd5f7abed9fb9f9fa34c/ATTI5d6206837aa4d4bc65d880d861dc1842BA71A0AA/gsnd-5110-gp3-the-duo")[Trello Board],
-	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3")[GitHub Repository],
-	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/blob/master/Team%20Log/Team%20Log.md")[Team Log],
+	maxcolumn: 10,
+	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3")[GitHub],
 	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/releases")[Releases],
+	mlink("https://nianyi-wang.itch.io/classroom-404")[itch.io],
+	mlink("https://www.youtube.com/watch?v=8zsTWFdrohA")[Playthrough Video],
+	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/blob/master/Playtest%20Doc/Playtest%20Doc.pdf")[Playtest Document],
+	mlink("https://trello.com/invite/b/672edd5f7abed9fb9f9fa34c/ATTI5d6206837aa4d4bc65d880d861dc1842BA71A0AA/gsnd-5110-gp3-the-duo")[Trello],
+	mlink("https://github.com/Nianyi-GSND-Projects/GSND-5110-GP3/blob/master/Team%20Log/Team%20Log.md")[Team Log],
 )
+
+#{
+	set align(center);
+	image("../Promotion/banner/banner 21x9.png", height: 16em);
+}
 
 #outline(indent: 1em)
 
@@ -516,7 +524,7 @@ As mentioned in @par:experience-door-knobs, a creaking sound would be made when 
 
 #[
 
-#show heading.where(level: 3): set heading(outlined: true)
+// #show heading.where(level: 3): set heading(outlined: true)
 
 === Tutorials
 
@@ -647,6 +655,8 @@ The game-ending animation would be rolled after the player left from the door.
 
 ]
 
+#show link: it => underline(text(it, fill: blue))
+
 == Trivia
 
 - This is the second version of design for this GP.
@@ -661,3 +671,45 @@ The game-ending animation would be rolled after the player left from the door.
 
 - When Xinyi was playing our game in the final showcase class, he totally missed the tutorial level designs.
 	Although when we were doing playtests, almost every player followed the intended route.
+
+- After Nianyi published the game to itch.io and spread the link to his friends, the most feedback Nianyi got is: "Is there any horror element in your game? I'm a bit scared while playing it."
+
+- We got this comment from a freshman from Nianyi's undergraduate university:
+	#{
+		set align(center);
+		image("./assets/remind.jpg", height: 4em);
+		show quote: set block(spacing: 1em);
+		quote(block: true, quotes: true)[玩这个游戏我想起来了自己十分钟从梆赶去四十八教的紧张感];
+		quote(block: true, quotes: true)[Playing this game, I'm reminded of the tension of myself rushing from _Bangzijing_ (the dormitory) to \#48 teaching hall in 10 minutes.];
+	}
+	(You could check the translation yourself :))
+
+	This is really cool, as the fact is that the idea of our game actually originates from his experience of running the very same route as described in #link("http://wangnianyi2001.com/blog/2024-09-16-the-art-of-game-design-book-note-1/")[Nianyi's blog].
+	This kid just see through our idea directly!
+	So it seems like we really did a successful job of creating and delivering the emotion!
+
+== External resource attribution
+
+=== Audios
+
+- Gloomy ambient sound loop: #link("https://freesound.org/people/newlocknew/sounds/691815/")[AMBDsgn_Otherworldly Gloomy Industrial Ambience 2-2_EM.wav]
+- Seemingly people taking background noise: #link("https://freesound.org/people/jorge.joyanes1/sounds/664037/")[Espacio sonoro 1.wav]
+- Door knob opening: #link("https://freesound.org/people/SoundDragon18/sounds/489473/")[Door Knob.wav]
+- Door opening: #link("https://freesound.org/people/BenjaminNelan/sounds/321085/")[Open Door #2]
+- Phone notification: #link("https://freesound.org/people/FoolBoyMedia/sounds/352651/")[Piano Notification 3]
+- Clock ticking: #link("https://freesound.org/people/GammaGool/sounds/759501/")[Tick Tock Dry]
+- Dying sound: #link("https://freesound.org/people/MeijstroAudio/sounds/372212/")[Bright Metal Rise 001]
+- Bell: #link("https://freesound.org/people/creeeeak/sounds/531021/")[bell2.wav]
+
+=== Images
+
+- Blackboard logo: #link("https://stock.adobe.com/search?k=dirty+chalkboard")[Adobe Stock]
+	- Chalk text: Generated with #link("https://fontmeme.com/chalk-fonts/")[fontmeme.com]
+- Skybox texture: Migrated from Nianyi's undergraduate capstone
+
+=== 3D Models
+
+- Horror school props: #link("https://assetstore.unity.com/packages/3d/props/furniture/horror-school-props-112589")[Unity AssetStore]
+- Door free pack aferar: #link("https://assetstore.unity.com/packages/3d/props/interior/door-free-pack-aferar-148411")[Unity AssetStore]
+- Floor textures: #link("https://assetstore.unity.com/packages/2d/textures-materials/floor-textures-4k-179126")[Unity AssetStore]
+- P3D indoor design starter kit (3D models furniture): #link("https://assetstore.unity.com/packages/3d/props/p3d-indoor-design-starter-kit-3d-models-furniture-264116")[Unity AssetStore]
